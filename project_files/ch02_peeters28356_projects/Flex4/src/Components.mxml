@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			protected function btn1_clickHandler(event:MouseEvent):void {
+				if(currentState == "default") {
+					currentState = "newLayout";
+				} else {
+					currentState = "default";
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<s:states>
+		<s:State name="default"/>
+		<s:State name="newLayout"/>
+	</s:states>
+	
+	<s:Group id="group">
+		<s:layout.newLayout>
+			<s:HorizontalLayout/>
+		</s:layout.newLayout>
+		<s:layout.default>
+			<s:VerticalLayout/>
+		</s:layout.default>
+		
+		<s:Label id="lbl1" text="Click on this button to change the layout"/>
+		<s:Button id="btn1" label="Change layout" click="btn1_clickHandler(event)"/>
+	</s:Group>
+</s:Application>

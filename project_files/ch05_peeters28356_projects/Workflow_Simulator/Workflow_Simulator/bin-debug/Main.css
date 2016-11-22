@@ -1,0 +1,20 @@
+
+@font-face
+{
+	fontFamily: "Lucida Calligraphy";
+	src: url("C:\WINDOWS\Fonts\LCALLIG.TTF");
+	embedAsCFF: true;
+}
+@font-face
+{
+	fontFamily: "Myriad Pro";
+	src: url("C:\WINDOWS\Fonts\MyriadPro-Regular.otf");
+	embedAsCFF: true;
+}
+@font-face
+{
+	fontFamily: "Myriad Pro";
+	fontWeight: bold;
+	src: url("C:\WINDOWS\Fonts\MyriadPro-Bold.otf");
+	embedAsCFF: true;
+}

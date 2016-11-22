@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+				layout="absolute" 
+				minWidth="1024" minHeight="768">
+	
+	<mx:Rotate id="rotate" angleFrom="0" angleTo="360" duration="3000"/>
+	
+	<mx:Panel width="300" height="300"
+			  horizontalCenter="0" verticalCenter="0"
+			  creationCompleteEffect="{rotate}">
+		<mx:Text width="100%" 
+				 text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis leo at ligula imperdiet sagittis id convallis neque. Duis nisl."/>
+	</mx:Panel>
+	
+</mx:Application>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" paddingTop="20"/>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import be.flexpert.contact.events.PersonEvent;
+			import be.flexpert.contact.proxies.ContactProxy;
+			import be.flexpert.contact.valueObjects.PersonDTO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.ListEvent;
+			
+			[Bindable]
+			private var _personsList:ArrayCollection;
+			
+			[Bindable]
+			private var _selectedPerson:PersonDTO = null;
+				
+			/**
+			 * This method initializes the component by starting
+			 * the retrieve operation on the database.
+			 */
+			public function init():void {
+				dispatchEvent(new Event(ContactProxy.READ_ALL_PERSONS));
+			}
+			
+			/**
+			 * @param ArrayCollection 	The list of persons.
+			 * 
+			 * This method sets the list of persons that has been
+			 * retrieved from the database.
+			 */
+			public function set personsList(value:ArrayCollection):void {
+				_personsList = value;
+				_selectedPerson = null;
+			}
+			
+			/**
+			 * @return ArrayCollection 	The list of persons.
+			 * 
+			 * This method returns the list of persons that has been
+			 * retrieved from the database.
+			 */
+			public function get personsList():ArrayCollection {
+				return _personsList;
+			}
+			
+			/**
+			 * @param MouseEvent The event that triggered the action
+			 * 
+			 * When creating a new item, we just add the item to the grid
+			 * and select it for the detail view.
+			 */
+			protected function btnNew_clickHandler(event:MouseEvent):void {
+				_selectedPerson = new PersonDTO();
+				grid.selectedIndex = -1;
+				fname.setFocus();
+			}
+			
+			/**
+			 * @param MouseEvent The event that triggered the action
+			 * 
+			 * When deleting an item, we just remove the item from the grid
+			 * and reset the selected person.
+			 */
+			protected function btnDelete_clickHandler(event:MouseEvent):void {
+				dispatchEvent(new PersonEvent(ContactProxy.DELETE_PERSON, _selectedPerson, true));
+			}
+			
+			/**
+			 * @param MouseEvent The event that triggered the action
+			 * 
+			 * When deleting an item, we just remove the item from the grid
+			 * and reset the selected person.
+			 */
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				if(_selectedPerson.id == 0) {
+					dispatchEvent(new PersonEvent(ContactProxy.CREATE_PERSON, _selectedPerson, true));
+				} else {
+					dispatchEvent(new PersonEvent(ContactProxy.UPDATE_PERSON, _selectedPerson, true));
+				}
+			}
+			
+			protected function grid_changeHandler(event:ListEvent):void
+			{
+				_selectedPerson = (grid.selectedItem as PersonDTO).clone();
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<mx:DataGrid id="grid" x="10" y="10" dataProvider="{_personsList}"
+				 change="grid_changeHandler(event)">
+		<mx:columns>
+			<mx:DataGridColumn headerText="ID" dataField="id" width="30"/>
+			<mx:DataGridColumn headerText="First name" dataField="firstname" width="100"/>
+			<mx:DataGridColumn headerText="Last name" dataField="lastname" width="100"/>
+			<mx:DataGridColumn headerText="Phone" dataField="phone" width="100"/>
+			<mx:DataGridColumn headerText="Email" dataField="email" width="200"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+	<mx:Form enabled="{_selectedPerson != null}">
+		<mx:FormItem label="First name">
+			<s:TextInput id="fname" width="200" text="@{_selectedPerson.firstname}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Last name">
+			<s:TextInput id="lname" width="200" text="@{_selectedPerson.lastname}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Phone">
+			<s:TextInput id="phone" width="200" text="@{_selectedPerson.phone}"/>
+		</mx:FormItem>
+		<mx:FormItem label="Email">
+			<s:TextInput id="email" width="200" text="@{_selectedPerson.email}"/>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:HBox>
+		<s:Button id="btnNew" label="New"
+				  click="btnNew_clickHandler(event)"/>
+		<s:Button id="btnDelete" label="Delete"
+				  click="btnDelete_clickHandler(event)"
+				  enabled="{grid.selectedIndex > -1}"/>
+		<s:Button id="btnSave" label="Save"
+				  enabled="{_selectedPerson != null}"
+				  click="btnSave_clickHandler(event)"/>
+		<s:Button id="btnCancel" label="Cancel"
+				  enabled="{_selectedPerson != null}"
+				  click="grid_changeHandler(null)"/>
+	</mx:HBox>
+</s:Group>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect xmlns:ns93792="http://ns.adobe.com/thermo/2009" height="10" ns93792:id="2" d:userLabel="top rectangle" width="304" x="0.5" y="0.5">
+		<s:fill>
+			<s:SolidColor color="#808080"/>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#808080" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Group d:userLabel="dots" x="147" y="4">
+		<s:Ellipse height="2" width="3" x="0" y="0">
+			<s:fill>
+				<s:SolidColor color="#E8E8E8"/>
+			</s:fill>
+		</s:Ellipse>
+		<s:Ellipse height="2" width="3" x="4" y="0">
+			<s:fill>
+				<s:SolidColor color="#E8E8E8"/>
+			</s:fill>
+		</s:Ellipse>
+		<s:Ellipse height="2" width="3" x="8" y="0">
+			<s:fill>
+				<s:SolidColor color="#E8E8E8"/>
+			</s:fill>
+		</s:Ellipse>
+	</s:Group>
+</s:Skin>

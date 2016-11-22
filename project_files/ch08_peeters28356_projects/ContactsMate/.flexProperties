@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexProperties enableServiceManager="false" flexServerFeatures="6" flexServerType="2" serverContextRoot="/lcds" serverRoot="c:/lcds3/tomcat/webapps/lcds" serverRootURL="http://localhost:8400/lcds/" toolCompile="true" useServerFlexSDK="false" version="2"/>

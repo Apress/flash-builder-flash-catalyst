@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<fx:DesignLayer d:userLabel="info button">
+		<s:Rect alpha="0.5" height="21" radiusX="3" d:userLabel="button gradient" width="30" x="1" y="2" visible.over="false" visible.down="false">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry alpha="1" color="#FFFFFF" ratio="0"/>
+					<s:GradientEntry alpha="1.0" color="#ACACAC" ratio="1"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		<s:Rect height="21" radiusX="3" width="30" x="1" y="2" d:userLabel="selected gradient" visible.up="false" visible.disabled="false" alpha.over="0.5">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry alpha="1.0" color="#FFFFFF" ratio="0"/>
+					<s:GradientEntry alpha="1.0" color="#E4FF9C" ratio="1"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/button_s Outer Stroke1.png')" d:userLabel="button's Outer Stroke" x="0" y="0"/>
+		<s:BitmapImage alpha="0.7" source="@Embed('/assets/images/webshop/image2.png')" d:userLabel="image" x="7" y="8"/>
+	</fx:DesignLayer>
+</s:Skin>

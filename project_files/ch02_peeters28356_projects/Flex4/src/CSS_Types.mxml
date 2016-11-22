@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		s|Button {
+			baseColor: #333333;
+			color: #CCCCCC;
+			focusColor: #666666;
+			fontFamily: Verdana;
+			fontSize: 14;
+			fontStyle: italic;
+		}
+	</fx:Style>
+	
+	<s:Group horizontalCenter="0" verticalCenter="0">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		<s:Button label="This is a button"/>
+		<s:Button label="This is another button"/>
+	</s:Group>
+</s:Application>

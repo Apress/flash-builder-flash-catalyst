@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Declarations>
+		<s:ArrayCollection id="ac">
+			<fx:Object podium="1 - Gold medal"/>
+			<fx:Object podium="2 - Silver medal"/>
+			<fx:Object podium="3 - Bronze medal"/>
+		</s:ArrayCollection>
+	</fx:Declarations>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:Button id="firstButton" label="Display data" click="grid.dataProvider=ac"/>
+	<mx:DataGrid id="grid"/>
+</s:Group>

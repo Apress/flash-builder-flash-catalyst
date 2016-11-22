@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<s:BitmapImage source="@Embed('/assets/images/webshop/close button_s Outer Stroke.png')" d:userLabel="close button's Outer Stroke" x="0" y="0"/>
+	<s:RichText color="#acacac" fontFamily="Century Gothic" fontSize="24" d:userLabel="x" whiteSpaceCollapse="preserve" x="13" y="8">
+		<s:content><s:p><s:span>x</s:span></s:p></s:content>
+	</s:RichText>
+</s:Group>

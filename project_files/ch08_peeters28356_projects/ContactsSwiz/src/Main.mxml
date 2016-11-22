@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:swiz="http://swiz.swizframework.org"
+			   xmlns:views="be.flexpert.contact.views.*"
+			   minWidth="955" minHeight="600">
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center"/>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.logging.LogEventLevel;
+			import mx.rpc.events.FaultEvent;
+			
+			private function generalFaultHandler(event:FaultEvent):void {
+				Alert.show(event.fault.faultString, event.fault.faultCode);	
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<swiz:SwizConfig strict="true"
+						 eventPackages="be.flexpert.contact.events"
+						 mediateBubbledEvents="true"
+						 viewPackages="be.flexpert.contact.views"
+						 beanLoaders="{[Beans]}"
+						 serviceCallFaultHandler="{generalFaultHandler}"
+						 logEventLevel="{LogEventLevel.WARN}"/>
+	</fx:Declarations>
+	
+	<views:Contacts id="contacts"/>
+</s:Application>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>WebshopPMD</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.adobe.ac.pmd.eclipse.flexpmdbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.project.flexnature</nature>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+		<nature>com.adobe.ac.pmd.eclipse.flexpmdnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>bin-debug</name>
+			<type>2</type>
+			<location>C:/ColdFusion9/wwwroot/webshop-debug</location>
+		</link>
+		<link>
+			<name>services/PhotoAssembler.cfc</name>
+			<type>1</type>
+			<location>C:/ColdFusion9/wwwroot/be/flexpert/webshop/assemblers/PhotoAssembler.cfc</location>
+		</link>
+		<link>
+			<name>services/UserAssembler.cfc</name>
+			<type>1</type>
+			<location>C:/ColdFusion9/wwwroot/be/flexpert/webshop/assemblers/UserAssembler.cfc</location>
+		</link>
+	</linkedResources>
+</projectDescription>

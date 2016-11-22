@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.ToggleButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<s:BitmapImage id="bitmapimage0" source="@Embed('/assets/images/webshop/Focus color.png')" d:userLabel="Focus color" x="0" y="0" visible.up="false" visible.over="false" visible.disabled="false" visible.disabledAndSelected="false"/>
+	<s:BitmapImage id="bitmapimage1" source="@Embed('/assets/images/webshop/Layer 93.png')" d:userLabel="Layer 93" x="1" y="0"/>
+	<s:BitmapImage source="@Embed('/assets/images/webshop/arrow.png')" d:userLabel="arrow" x="197" y="0"/>
+	<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" id="labelDisplay" d:userLabel="SELECT PHOTO CATEGORY" whiteSpaceCollapse="preserve" width="183" x="7" y="6"/>
+	<s:transitions>
+		<s:Transition fromState="down" toState="up" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage0}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Skin>

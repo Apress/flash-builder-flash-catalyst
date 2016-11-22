@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TextInput xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			override public function set errorString(value:String):void {
+				if((value != null) && (value.length > 0)) {
+					currentState = "error";
+				} else {
+					currentState = "default";
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<s:states>
+		<s:State name="default"/>
+		<s:State name="error"/>
+	</s:states>
+</s:TextInput>

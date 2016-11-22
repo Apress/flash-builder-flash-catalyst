@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   minWidth="800" minHeight="600"
+			   maxWidth="800" maxHeight="600">
+
+	<fx:Script>
+		<![CDATA[
+			protected function img_mouseMoveHandler(event:MouseEvent):void
+			{
+				lblX.text = "X-position = " + event.stageX;
+				lblY.text = "Y-postion = " + event.stageY;
+				
+				var x:Number = event.stageX;
+				var y:Number = event.stageY;
+				var val:Number = x - y;
+			}
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+	</fx:Declarations>
+	<mx:Image id="img" source="../assets/blue_hills.jpg"
+			  mouseMove="img_mouseMoveHandler(event)"/>
+	<s:Label x="326" y="33" text="X-position = 0" id="lblX" fontSize="20"/>
+	<s:Label x="326" y="59" text="Y-position = 0" id="lblY" fontSize="20"/>
+	
+</s:Application>

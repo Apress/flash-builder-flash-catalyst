@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;webshop_backend/Untitled_cfm.cfm&apos; to &apos;index.cfm&apos;" description="Rename resource &apos;Untitled_cfm.cfm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Untitled_cfm.cfm" name="index.cfm" stamp="1263120805906" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;webshop_backend/be/flexpert/webshop/dto&apos; to &apos;dtos&apos;" description="Rename resource &apos;dto&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="be/flexpert/webshop/dto" name="dtos" stamp="1263121099413" updateReferences="true"/>
+</session>

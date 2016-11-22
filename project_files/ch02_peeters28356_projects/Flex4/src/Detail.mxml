@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			public var person:Object;
+			
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				lblFname.text = "First name = " + person.firstname;
+				lblLname.text = "Last name = " + person.lastname;
+			}
+			
+			protected function btnCancel_clickHandler(event:MouseEvent):void
+			{
+				lblFname.text = "";
+				lblLname.text = "";
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<mx:FormHeading label="Person details"/>
+	<mx:FormItem label="ID">
+		<mx:Label text="{person.index}"/>
+	</mx:FormItem>
+	<mx:FormItem label="First name">
+		<s:TextInput id="fname" text="@{person.firstname}"/>
+	</mx:FormItem>
+	<mx:FormItem label="Last name">
+		<s:TextInput id="lname" text="@{person.lastname}"/>
+	</mx:FormItem>
+	<mx:FormItem direction="horizontal">
+		<s:Button id="btnSave" label="Save" click="btnSave_clickHandler(event)"/>
+		<s:Button id="btnCancel" label="Cancel" click="btnCancel_clickHandler(event)"/>
+	</mx:FormItem>
+	
+	<mx:Spacer height="50"/>
+	
+	<mx:FormItem label="Results after change">
+		<mx:Label id="lblFname"/>
+		<mx:Label id="lblLname"/>
+	</mx:FormItem>
+</mx:Form>

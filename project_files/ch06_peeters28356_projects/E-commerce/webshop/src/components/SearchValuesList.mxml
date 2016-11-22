@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.List")]</fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<fx:DesignLayer d:userLabel="Dropdown values">
+		<s:BitmapImage source="@Embed('/assets/images/webshop/dropdown background.png')" d:userLabel="dropdown background" y="0" x="32"/>
+		<s:DataGroup itemRenderer="components.RepeatedItem2" x="0" y="3" id="dataGroup" width="318" height="95" clipAndEnableScrolling="true">
+			<s:layout>
+				<s:VerticalLayout gap.normal="1"/>
+			</s:layout>
+		</s:DataGroup>
+		<s:Rect d:userLabel="Item Highlight Rectangle" width="318" height="18" alpha="0" x="0" y="3" visible.normal="false">
+			<s:fill>
+				<s:SolidColor color="0xCED7EE"/>
+			</s:fill>
+		</s:Rect>
+	</fx:DesignLayer>
+</s:Skin>

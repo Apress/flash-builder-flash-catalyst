@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+		protected function btn1_clickHandler(event:MouseEvent):void {
+			if((currentState == null) || (currentState == "")) {
+				currentState = "newLayout";
+			} else {
+				currentState = "";
+			}
+		}
+		]]>
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="newLayout">
+			<mx:AddChild>
+				<mx:VBox id="vbox"/>
+			</mx:AddChild>
+			<mx:RemoveChild target="{lbl1}"/>
+			<mx:AddChild relativeTo="{vbox}" position="lastChild" target="{lbl1}"/>
+			<mx:RemoveChild target="{btn1}"/>
+			<mx:AddChild relativeTo="{vbox}" position="lastChild" target="{btn1}"/>
+			<mx:RemoveChild target="{hbox}"/>
+		</mx:State>
+	</mx:states>
+	
+	<mx:HBox id="hbox">
+		<mx:Label id="lbl1" text="Click on this button to change the layout"/>
+		<mx:Button id="btn1" label="Change layout" click="btn1_clickHandler(event)"/>
+	</mx:HBox>
+</mx:Application>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.ItemClickEvent;
+
+			protected function firstGroup_itemClickHandler(event:ItemClickEvent):void {
+				if(event.label == "Yes") {
+					if(currentState == "state2") {
+						currentState = "state3";
+					} else {
+						currentState = "state1";
+					}
+				} else {
+					if(currentState == "state3") {
+						currentState = "state2";
+					} else {
+						currentState = "";
+					}
+				}
+			}
+
+			protected function thirdGroup_itemClickHandler(event:ItemClickEvent):void {
+				if(event.label == "Yes") {
+					if(currentState == "state1") {
+						currentState = "state3";
+					} else {
+						currentState = "state2";
+					}
+				} else {
+					if(currentState == "state3") {
+						currentState = "state1";
+					} else {
+						currentState = "";
+					}
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<s:RadioButtonGroup id="firstGroup" itemClick="firstGroup_itemClickHandler(event)"/>
+		<s:RadioButtonGroup id="secondGroup"/>
+		<s:RadioButtonGroup id="thirdGroup" itemClick="thirdGroup_itemClickHandler(event)"/>
+		<s:RadioButtonGroup id="fourthGroup"/>
+		<s:RadioButtonGroup id="fifthGroup"/>
+	</fx:Declarations>
+
+	<s:states>
+		<s:State name="default"/>
+		<s:State name="state1"/>
+		<s:State name="state2"/>
+		<s:State name="state3"/>
+	</s:states>
+	
+	<s:Group id="box1">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label text="Do you want to show the second question?"
+				 width="300"/>
+		<s:RadioButton label="Yes" group="{firstGroup}"/>
+		<s:RadioButton label="No" group="{firstGroup}"/>		
+	</s:Group>
+	<s:Group id="box2" includeIn="state1, state3">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label text="Do you see the second question now?" width="300"/>
+		<s:RadioButton label="Yes" group="{fourthGroup}"/>
+		<s:RadioButton label="No" group="{fourthGroup}"/>		
+	</s:Group>
+	<s:Group id="box3">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label text="Is this is the third question?" width="300"/>
+		<s:RadioButton label="Yes" group="{secondGroup}" styleName.default="special"/>
+		<s:RadioButton label="No" group="{secondGroup}"/>
+	</s:Group>
+	<s:Group id="box4">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label text="Do you want to show the fifth question?" width="300"/>
+		<s:RadioButton label="Yes" group="{thirdGroup}"/>
+		<s:RadioButton label="No" group="{thirdGroup}"/>
+	</s:Group>
+	<s:Group id="box5" includeIn="state2, state3">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label text="Do you see the fifth question now?" width="300"/>
+		<s:RadioButton label="Yes" group="{fifthGroup}"/>
+		<s:RadioButton label="No" group="{fifthGroup}"/>
+	</s:Group>
+</s:Application>

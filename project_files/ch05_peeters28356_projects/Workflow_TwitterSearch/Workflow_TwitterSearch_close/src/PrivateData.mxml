@@ -1,0 +1,67 @@
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:mngo="http://ns.adobe.com/flamingo/apd" xmlns:flm="http://ns.adobe.com/flame/2008" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:variant="http://ns.adobe.com/flame/2008/apd" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:ATE="http://ns.adobe.com/ate/2009">
+	<fx:Private>
+		<mngo:VariantContent fpdNS="http://ns.adobe.com/flame/2008/apd" fpdPRE="variant" flm:hashcode="FE5EB2D20055C4FD5B2C2249ECFC5740" flm:original="1" d:ref="#5">
+			<variant:RichText x="474.715" y="118.729" whiteSpaceCollapse="preserve" ai:aa="2" d:id="9" d:userLabel="button text" fontFamily="Arial" color="#000000">
+				<variant:content>
+					<variant:p fontFamily="Arial" d:id="10">
+						<variant:span fontFamily="Arial" d:id="11">SEARCH...</variant:span>
+					</variant:p>
+				</variant:content>
+			</variant:RichText>
+		</mngo:VariantContent>
+		<mngo:VariantContent fpdNS="http://ns.adobe.com/flame/2008/apd" fpdPRE="variant" flm:hashcode="B5AA30EA71B2E9CFEC46088ABD040146" flm:original="2" d:ref="#7">
+			<variant:RichText x="303" y="169.75" whiteSpaceCollapse="preserve" ai:aa="2" d:id="12" d:userLabel="content" fontFamily="Arial" color="#000000">
+				<variant:content>
+					<variant:p fontFamily="Arial" d:id="13">
+						<variant:span fontFamily="Arial" d:id="14">I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex.</variant:span>
+					</variant:p>
+				</variant:content>
+			</variant:RichText>
+		</mngo:VariantContent>
+		<mngo:VariantContent fpdNS="http://ns.adobe.com/flame/2008/apd" fpdPRE="variant" flm:hashcode="E9CF50181079121AB97E207FACA751CA" flm:original="3" d:ref="#8">
+			<variant:RichText x="246" y="154.25" whiteSpaceCollapse="preserve" ai:aa="2" d:id="15" d:userLabel="header" fontFamily="Arial" color="#000000">
+				<variant:content>
+					<variant:p fontFamily="Arial" d:id="16">
+						<variant:span fontFamily="Arial" d:id="17">AikiSteve</variant:span>
+					</variant:p>
+				</variant:content>
+			</variant:RichText>
+		</mngo:VariantContent>
+		<ai:PrivateElement d:ref="#1">
+			<ai:SaveOptions>
+				<ai:Dict data="I versionKey 2 B writeImages 1 B includeXMP 0 B includeSymbol 0 B aiEditCap 1 B includeObjectOutsideArtboard 0 I expandBlendsOption 5 I preserveGradientPolicy 4 I preserveFilterPolicy 3 I preserveTextPolicy 4 I rasterizeResolution 72 B downsampleLinkedImages 1 "/>
+			</ai:SaveOptions>
+			<ai:DocData base="TwitterSearch.assets/images" globalOffsetV="600" rulerCanvasDiffH="400.5" rulerCanvasDiffV="-299.5">
+				<ai:DocRasterSettings>
+					<ai:Dict data="R padd 36 B mask 0 B spot 0 B alis 0 I dpi. 72 I colr 4 "/>
+				</ai:DocRasterSettings>
+			</ai:DocData>
+			<ai:AutoGenImageList>
+				<ai:Dict>
+					<ai:Entry name="0" value="aikido-msn.png" valueType="U"/>
+				</ai:Dict>
+			</ai:AutoGenImageList>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="5FF6D9A9BC90AF571B309F96887DD35B" d:ref="#2">
+			<ai:LayerOptions color="5 257 79.31 79.31"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="4B49F65487C1618E10A89BC97BA2EE47" d:ref="#3">
+			<ai:LayerOptions color="5 79.31 257 79.31"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="E3F8385107BAE775C64C673840547654" d:ref="#4">
+			<ai:LayerOptions color="5 79.31 79.31 257"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="FC77BDD4F80346065031899AE631E68F" d:ref="#6">
+			<ai:LayerOptions color="5 257 79.31 79.31"/>
+		</ai:PrivateElement>
+		<ATE:ATEAttributes ATE:C_autoLeading="true" ATE:C_baseLine="normal" ATE:C_baselineShift="0" ATE:C_charRotation="0" ATE:C_color="#000000" ATE:C_fill="true" ATE:C_fillFirst="true" ATE:C_fillOverprint="false" ATE:C_fillVisible="true" ATE:C_font="MyriadPro-Regular" ATE:C_fontCaps="normal" ATE:C_fontSize="11" ATE:C_horizontalScale="1" ATE:C_kerning="metric" ATE:C_leading="13.2" ATE:C_lineCapType="buttCap" ATE:C_lineDashOffset="0" ATE:C_lineHeight="1.2" ATE:C_lineJoinType="miterJoin" ATE:C_lineWidth="1" ATE:C_miterLimit="4" ATE:C_noBreak="false" ATE:C_strikethroughPos="off" ATE:C_stroke="false" ATE:C_strokeColor="#000000" ATE:C_strokeOverprint="false" ATE:C_strokeVisible="true" ATE:C_tracking="0" ATE:C_underlineOffset="0" ATE:C_underlinePos="off" ATE:C_verticalScale="1" ATE:JC_leftAki="-1" ATE:JC_rightAki="-1" ATE:JC_styleRunAlign="byRomanHori_centerVertical" ATE:JC_tusme="0" ATE:JO_japAltFeature="default" ATE:JO_kana="false" ATE:JO_language="english" ATE:JO_proportionalMetrics="false" ATE:JO_romanItalics="false" ATE:JO_ruby="false" ATE:JP_autoTCY="0" ATE:JP_burasagariType="none" ATE:JP_hangingRoman="false" ATE:JP_kurikaeshiMojiShori="false" ATE:JP_leadingType="roman" ATE:MC_diacVPosition="openType" ATE:MC_diacXPos="0" ATE:MC_diacYPos="0" ATE:MC_digitSet="default" ATE:MC_directionOverride="default" ATE:MC_kashidas="default" ATE:MO_justificationAlt="false" ATE:MO_overlapSwash="false" ATE:MO_stretchedAlt="false" ATE:MP_justificationMethod="default" ATE:O_alternateLigatures="false" ATE:O_connectionForms="false" ATE:O_contextualLigatures="true" ATE:O_discretionaryLigatures="false" ATE:O_figureStyle="default" ATE:O_fontOTPos="normal" ATE:O_fractions="false" ATE:O_ligature="true" ATE:O_oldStyle="false" ATE:O_ordinals="false" ATE:O_ornaments="false" ATE:O_stylisticAlternates="false" ATE:O_swash="false" ATE:O_titling="false" ATE:P_autoHyphenate="true" ATE:P_autoLeadingPercentage="1.2" ATE:P_composerEngine="latinCJK" ATE:P_consecutiveHyphenLimit="0" ATE:P_defaultTabWidth="36" ATE:P_endIndent="0" ATE:P_everyLineComposer="false" ATE:P_firstlineIndent="0" ATE:P_glyphScaling="1" ATE:P_hyphenateCapitalized="true" ATE:P_hyphenatedWordSize="6" ATE:P_hyphenationPreference="0.5" ATE:P_hyphenationZone="36" ATE:P_letterSpacing="0" ATE:P_maxGlyphScaling="1" ATE:P_maxLetterSpacing="0" ATE:P_maxWordSpacing="1.33" ATE:P_minGlyphScaling="1" ATE:P_minLetterSpacing="0" ATE:P_minWordSpacing="0.8" ATE:P_paragraphDirection="ltr" ATE:P_postHyphenSize="2" ATE:P_preHyphenSize="2" ATE:P_singleWordJustif="fullJustifyLastLineFull" ATE:P_spaceAfter="0" ATE:P_spaceBefore="0" ATE:P_startIndent="0" ATE:P_textAlign="left" ATE:P_wordSpacing="1" ATE:TA_columnCount="1" ATE:TA_height="0" ATE:TA_lineOrientation="horiz" ATE:TA_spacing="0" ATE:TA_width="0" ATE:T_baselineDirection="withStream" ATE:T_leftRightAdjust="0" ATE:T_upDownAdjust="0" ATE:W_lineCount="2" ATE:W_lineGap="0" ATE:W_orphanAmount="2" ATE:W_scale="0.5" ATE:W_warichuEnabled="false" ATE:W_warichuJustification="autoJustify" ATE:W_widowAmount="2" flm:hashcode="2E71E60D19974D5F54B1270BDA86DC10" d:ref="#9"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#10"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#11"/>
+		<ATE:ATEAttributes ATE:C_autoLeading="true" ATE:C_baseLine="normal" ATE:C_baselineShift="0" ATE:C_charRotation="0" ATE:C_color="#000000" ATE:C_fill="true" ATE:C_fillFirst="true" ATE:C_fillOverprint="false" ATE:C_fillVisible="true" ATE:C_font="MyriadPro-Regular" ATE:C_fontCaps="normal" ATE:C_fontSize="12" ATE:C_horizontalScale="1" ATE:C_kerning="metric" ATE:C_leading="14.4" ATE:C_lineCapType="buttCap" ATE:C_lineDashOffset="0" ATE:C_lineHeight="1.2" ATE:C_lineJoinType="miterJoin" ATE:C_lineWidth="1" ATE:C_miterLimit="4" ATE:C_noBreak="false" ATE:C_strikethroughPos="off" ATE:C_stroke="false" ATE:C_strokeColor="#000000" ATE:C_strokeOverprint="false" ATE:C_strokeVisible="true" ATE:C_tracking="0" ATE:C_underlineOffset="0" ATE:C_underlinePos="off" ATE:C_verticalScale="1" ATE:JC_leftAki="-1" ATE:JC_rightAki="-1" ATE:JC_styleRunAlign="byRomanHori_centerVertical" ATE:JC_tusme="0" ATE:JO_japAltFeature="default" ATE:JO_kana="false" ATE:JO_language="english" ATE:JO_proportionalMetrics="false" ATE:JO_romanItalics="false" ATE:JO_ruby="false" ATE:JP_autoTCY="0" ATE:JP_burasagariType="none" ATE:JP_hangingRoman="false" ATE:JP_kurikaeshiMojiShori="false" ATE:JP_leadingType="roman" ATE:MC_diacVPosition="openType" ATE:MC_diacXPos="0" ATE:MC_diacYPos="0" ATE:MC_digitSet="default" ATE:MC_directionOverride="default" ATE:MC_kashidas="default" ATE:MO_justificationAlt="false" ATE:MO_overlapSwash="false" ATE:MO_stretchedAlt="false" ATE:MP_justificationMethod="default" ATE:O_alternateLigatures="false" ATE:O_connectionForms="false" ATE:O_contextualLigatures="true" ATE:O_discretionaryLigatures="false" ATE:O_figureStyle="default" ATE:O_fontOTPos="normal" ATE:O_fractions="false" ATE:O_ligature="true" ATE:O_oldStyle="false" ATE:O_ordinals="false" ATE:O_ornaments="false" ATE:O_stylisticAlternates="false" ATE:O_swash="false" ATE:O_titling="false" ATE:P_autoHyphenate="true" ATE:P_autoLeadingPercentage="1.2" ATE:P_composerEngine="latinCJK" ATE:P_consecutiveHyphenLimit="0" ATE:P_defaultTabWidth="36" ATE:P_endIndent="0" ATE:P_everyLineComposer="false" ATE:P_firstlineIndent="0" ATE:P_glyphScaling="1" ATE:P_hyphenateCapitalized="true" ATE:P_hyphenatedWordSize="6" ATE:P_hyphenationPreference="0.5" ATE:P_hyphenationZone="36" ATE:P_letterSpacing="0" ATE:P_maxGlyphScaling="1" ATE:P_maxLetterSpacing="0" ATE:P_maxWordSpacing="1.33" ATE:P_minGlyphScaling="1" ATE:P_minLetterSpacing="0" ATE:P_minWordSpacing="0.8" ATE:P_paragraphDirection="ltr" ATE:P_postHyphenSize="2" ATE:P_preHyphenSize="2" ATE:P_singleWordJustif="fullJustifyLastLineFull" ATE:P_spaceAfter="0" ATE:P_spaceBefore="0" ATE:P_startIndent="0" ATE:P_textAlign="left" ATE:P_wordSpacing="1" ATE:TA_columnCount="1" ATE:TA_height="55" ATE:TA_lineOrientation="horiz" ATE:TA_spacing="0" ATE:TA_width="208" ATE:T_baselineDirection="withStream" ATE:T_leftRightAdjust="0" ATE:T_upDownAdjust="0" ATE:W_lineCount="2" ATE:W_lineGap="0" ATE:W_orphanAmount="2" ATE:W_scale="0.5" ATE:W_warichuEnabled="false" ATE:W_warichuJustification="autoJustify" ATE:W_widowAmount="2" flm:hashcode="993D623FC7A198859EDC078012E64C7C" d:ref="#12"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#13"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#14"/>
+		<ATE:ATEAttributes ATE:C_autoLeading="true" ATE:C_baseLine="normal" ATE:C_baselineShift="0" ATE:C_charRotation="0" ATE:C_color="#000000" ATE:C_fill="true" ATE:C_fillFirst="true" ATE:C_fillOverprint="false" ATE:C_fillVisible="true" ATE:C_font="MyriadPro-Bold" ATE:C_fontCaps="normal" ATE:C_fontSize="12" ATE:C_horizontalScale="1" ATE:C_kerning="metric" ATE:C_leading="14.4" ATE:C_lineCapType="buttCap" ATE:C_lineDashOffset="0" ATE:C_lineHeight="1.2" ATE:C_lineJoinType="miterJoin" ATE:C_lineWidth="1" ATE:C_miterLimit="4" ATE:C_noBreak="false" ATE:C_strikethroughPos="off" ATE:C_stroke="false" ATE:C_strokeColor="#000000" ATE:C_strokeOverprint="false" ATE:C_strokeVisible="true" ATE:C_tracking="0" ATE:C_underlineOffset="0" ATE:C_underlinePos="off" ATE:C_verticalScale="1" ATE:JC_leftAki="-1" ATE:JC_rightAki="-1" ATE:JC_styleRunAlign="byRomanHori_centerVertical" ATE:JC_tusme="0" ATE:JO_japAltFeature="default" ATE:JO_kana="false" ATE:JO_language="english" ATE:JO_proportionalMetrics="false" ATE:JO_romanItalics="false" ATE:JO_ruby="false" ATE:JP_autoTCY="0" ATE:JP_burasagariType="none" ATE:JP_hangingRoman="false" ATE:JP_kurikaeshiMojiShori="false" ATE:JP_leadingType="roman" ATE:MC_diacVPosition="openType" ATE:MC_diacXPos="0" ATE:MC_diacYPos="0" ATE:MC_digitSet="default" ATE:MC_directionOverride="default" ATE:MC_kashidas="default" ATE:MO_justificationAlt="false" ATE:MO_overlapSwash="false" ATE:MO_stretchedAlt="false" ATE:MP_justificationMethod="default" ATE:O_alternateLigatures="false" ATE:O_connectionForms="false" ATE:O_contextualLigatures="true" ATE:O_discretionaryLigatures="false" ATE:O_figureStyle="default" ATE:O_fontOTPos="normal" ATE:O_fractions="false" ATE:O_ligature="true" ATE:O_oldStyle="false" ATE:O_ordinals="false" ATE:O_ornaments="false" ATE:O_stylisticAlternates="false" ATE:O_swash="false" ATE:O_titling="false" ATE:P_autoHyphenate="true" ATE:P_autoLeadingPercentage="1.2" ATE:P_composerEngine="latinCJK" ATE:P_consecutiveHyphenLimit="0" ATE:P_defaultTabWidth="36" ATE:P_endIndent="0" ATE:P_everyLineComposer="false" ATE:P_firstlineIndent="0" ATE:P_glyphScaling="1" ATE:P_hyphenateCapitalized="true" ATE:P_hyphenatedWordSize="6" ATE:P_hyphenationPreference="0.5" ATE:P_hyphenationZone="36" ATE:P_letterSpacing="0" ATE:P_maxGlyphScaling="1" ATE:P_maxLetterSpacing="0" ATE:P_maxWordSpacing="1.33" ATE:P_minGlyphScaling="1" ATE:P_minLetterSpacing="0" ATE:P_minWordSpacing="0.8" ATE:P_paragraphDirection="ltr" ATE:P_postHyphenSize="2" ATE:P_preHyphenSize="2" ATE:P_singleWordJustif="fullJustifyLastLineFull" ATE:P_spaceAfter="0" ATE:P_spaceBefore="0" ATE:P_startIndent="0" ATE:P_textAlign="left" ATE:P_wordSpacing="1" ATE:TA_columnCount="1" ATE:TA_height="9" ATE:TA_lineOrientation="horiz" ATE:TA_spacing="0" ATE:TA_width="216" ATE:T_baselineDirection="withStream" ATE:T_leftRightAdjust="0" ATE:T_upDownAdjust="0" ATE:W_lineCount="2" ATE:W_lineGap="0" ATE:W_orphanAmount="2" ATE:W_scale="0.5" ATE:W_warichuEnabled="false" ATE:W_warichuJustification="autoJustify" ATE:W_widowAmount="2" flm:hashcode="72D7FA84D7D86BFFF4A3A406976215E7" d:ref="#15"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#16"/>
+		<ATE:ATEAttributes ATE:C_kerning="metric" ATE:C_lineHeight="1.2" d:ref="#17"/>
+	</fx:Private>
+</s:Group>

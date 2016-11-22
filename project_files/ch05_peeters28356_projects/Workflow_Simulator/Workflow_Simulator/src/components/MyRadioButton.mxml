@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.RadioButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<s:BitmapImage source="@Embed('/assets/images/Simulator/Radio 2.png')" d:userLabel="Radio 2" x="0" y="0"/>
+	<s:BitmapImage source="@Embed('/assets/images/Simulator/Radio 2 selected.png')" d:userLabel="Radio 2 selected" y="3" x="4" id="bitmapimage1" visible.up="false" visible.over="false"/>
+</s:Skin>

@@ -1,0 +1,60 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/halo";
+@namespace co "com.domain.project.controls.*";
+
+global {
+	font-family: Verdana;
+	color: #333333;
+}
+
+s|Panel * {
+	color: #000099;	
+}
+
+mx|Button, s|Button {
+	baseColor: #666666;
+	color: #CCCCCC;
+	focusColor: #666666;
+}
+
+co|MyCustomDataGrid s|Button {
+	baseColor: #333333;
+	color: #CCCCCC;
+	focusColor: #666666;
+	fontFamily: Verdana;
+	fontSize: 14;
+	fontStyle: italic;
+}
+
+s|Button.myStyleName {
+	baseColor: #333333;
+	color: #CCCCCC;
+	focusColor: #666666;
+	fontFamily: Verdana;
+	fontSize: 14;
+	fontStyle: italic;
+}
+
+s|Label.myStyleName {
+	color: #000099;
+	fontWeight: bold;
+}			
+
+#firstButton {
+	baseColor: #333333;
+	color: #CCCCCC;
+	focusColor: #666666;
+	fontFamily: Verdana;
+	fontSize: 14;
+	fontStyle: italic;
+}
+
+co|MyCustomTextInput:default {
+	contentBackgroundColor: #FFFFFF;
+	color: #333333;
+}
+
+co|MyCustomTextInput:error {
+	contentBackgroundColor: #CC0000;
+	color: #FFFFFF;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:ai="http://ns.adobe.com/ai/2009" 
+				xmlns:d="http://ns.adobe.com/fxg/2008/dt" 
+				xmlns:flm="http://ns.adobe.com/flame/2008" 
+				xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="hovered"/>
+		<s:State name="selected"/>
+	</s:states>
+	<s:Rect height="92" id="rect1" visible.normal="false" width="290" width.hovered="291" width.normal="291" width.selected="291" x.hovered="0" x.normal="0" x.selected="0" y.hovered="0" y.normal="0" y.selected="0">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF" color.hovered="#CCCCCC" color.selected="#999999"/>
+		</s:fill>
+	</s:Rect>
+	<mx:Image ai:embed="1" height="48" maintainAspectRatio="false" source="{data.link[1].href}" d:userLabel="image" width="45" x="11" y="28"/>
+	<s:RichText ai:aa="2" color="#000000" columnCount="1" fontFamily="Myriad Pro" height="55" d:id="7" kerning="on" d:label="ATE Text To TLF Text" text="{data.title}" d:userLabel="I’m trying to create a simplistic twitter client a..." flm:variant="2" whiteSpaceCollapse="preserve" width="208" x="66" y="26"/>
+	<s:RichText ai:aa="2" color="#000000" columnCount="1" fontFamily="Myriad Pro" fontWeight="bold" height="9" d:id="8" kerning="on" d:label="ATE Text To TLF Text" text="{data.author.name}" d:userLabel="AikiSteve" flm:variant="3" whiteSpaceCollapse="preserve" width="216" x="9" y="10"/>
+	<s:Rect height="48" d:userLabel="image square" width="48" x="9.5" y="27.5">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#949494" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Rect alpha.hovered="0.4" alpha.normal="0" alpha.selected="0.8" height="93" id="rect2" d:userLabel="Item Highlight Rectangle" visible.hovered="false" visible.normal="false" visible.selected="false" width="291" width.normal="290" x.normal="0" y.normal="0">
+		<s:fill>
+			<s:SolidColor color="0xCED7EE"/>
+		</s:fill>
+	</s:Rect>
+	<s:transitions>
+		<s:Transition fromState="selected" toState="normal" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{rect1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{rect2}">
+					<s:Resize duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:ItemRenderer>

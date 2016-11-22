@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:d="http://ns.adobe.com/fxg/2008/dt" 
+		 xmlns:fc="http://ns.adobe.com/flashcatalyst/2009"
+		 xmlns:vo="be.flexpert.webshop.valueObjects.*">
+	<fx:Metadata>
+		[Event(name="selectionChanged", type="flash.events.Event")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.Application;
+			import mx.core.FlexGlobals;
+
+			protected function toggleButton_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Over' ) {
+					currentState='Down';
+				}
+				if ( state == 'Down' ) {
+					currentState='Over';
+				}
+			}
+
+			protected function list_changeHandler():void
+			{
+				currentState='Over';
+				
+				button.label = list.selectedItem.text;
+				dispatchEvent(new Event(FlexGlobals.topLevelApplication.SELECTION_CHANGED));
+			}
+
+
+			protected function toggleButton_rollOverHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Up' ) {
+					currentState='Over';
+				}
+			}
+
+
+			protected function toggleButton_rollOutHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Over' ) {
+					currentState='Up';
+				}
+			}
+
+			public function get selectedItem():SearchItem {
+				return list.selectedItem;
+			}
+			
+			public function set selectedItem(value:SearchItem):void {
+				list.selectedItem = value;
+				button.label = list.selectedItem.text;
+			}
+			
+			public function get selectedIndex():int {
+				return list.selectedIndex;
+			}
+			
+			public function set selectedIndex(value:int):void {
+				list.selectedIndex = value;
+				button.label = list.selectedItem.text;
+			}
+			
+			public function get text():String {
+				return button.label;
+			}
+		]]>
+
+	</fx:Script>
+	<s:states>
+		<s:State name="Up" fc:color="0xcc0000"/>
+		<s:State name="Down" fc:color="0x00cc21"/>
+		<s:State name="Over"/>
+		<s:State name="Disabled"/>
+	</s:states>
+	<fx:DesignLayer d:userLabel="Dropdown">
+		<s:ToggleButton id="button" skinClass="components.MyCustomComboBox" x="31" y="0" label="ALL"
+						click="toggleButton_clickHandler()" selected.Over="true" selected.Down="true" 
+						selected.Up="false" rollOver="toggleButton_rollOverHandler()" rollOut="toggleButton_rollOutHandler()" 
+						selected.Disabled="false" enabled.Disabled="false"/>
+	</fx:DesignLayer>
+	<s:List selectedIndex="0" skinClass="components.SearchValuesList" x="0" y="22" visible.Up="false" id="list" 
+			change="list_changeHandler()" visible.Over="false" visible.Disabled="false">
+		<s:ArrayCollection>
+			<vo:SearchItem image="@Embed('/assets/images/webshop/hover item.png')" text="ALL"/>
+			<vo:SearchItem image="@Embed('/assets/images/webshop/hover item.png')" text="WATERFALLS"/>
+			<vo:SearchItem image="@Embed('/assets/images/webshop/hover item.png')" text="REFLECTIONS"/>
+			<vo:SearchItem image="@Embed('/assets/images/webshop/hover item.png')" text="LAKES"/>
+			<vo:SearchItem image="@Embed('/assets/images/webshop/hover item.png')" text="MOUNTAINS"/>
+		</s:ArrayCollection>
+	</s:List>
+	<s:transitions>
+		<s:Transition fromState="Down" toState="Up" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{list}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Group>

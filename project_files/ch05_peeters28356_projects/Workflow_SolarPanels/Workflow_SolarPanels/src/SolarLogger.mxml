@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<s:Application xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:lib="Main_library.*" xmlns:flm="http://ns.adobe.com/flame/2008" xmlns:components="components.*" backgroundColor="#364359" currentState="Page2" height="200" preloaderBaseColor="#364359" width="200" creationComplete="application_creationCompleteHandler()" viewSourceURL="srcview/index.html">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.Sort;
+			import mx.collections.SortField;
+			import mx.controls.Alert;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.effects.Rotate;
+			
+			private var timer:Timer;
+			private var solarData:ArrayCollection;
+			private var csvData:Array;
+			
+			protected function application_creationCompleteHandler():void
+			{
+				timer = new Timer(600000);
+				timer.addEventListener(TimerEvent.TIMER, fetchData);
+				timer.start();
+				fetchData(null);
+			}
+
+			private function fetchData(event:TimerEvent):void
+			{
+				loader.send({url:"http://www.solarlog-home2.eu/pv-peeters/min_day.js"});
+			}
+			
+			private function convertData(event:ResultEvent):void 
+			{
+				csvData = (event.result as String).split("\r\n");
+				solarData = new ArrayCollection();
+				
+				for(var i:uint = 0; i < csvData.length; i++) {
+					var str:String = csvData[i] as String;
+
+					if((str != null) && (str.length > 0)) {
+						var arr:Array = str.substr(9,str.length - 10).split("|");
+						var obj:Object = new Object();
+						obj.date = new Date(2000 + Number(arr[0].substr(6,2)),
+							Number(arr[0].substr(3,2)) - 1,
+							Number(arr[0].substr(0,2)),
+							Number(arr[0].substr(9,2)),
+							Number(arr[0].substr(12,2)));
+						var contentArr:Array = arr[1].split(";");
+						obj.P_MomentTotal = contentArr[0];
+						obj.P_MomentString1 = contentArr[1];
+						obj.P_MomentString2 = contentArr[2];
+						obj.P_TotalDay = contentArr[3];
+						obj.P_DC_String1 = contentArr[4];
+						obj.P_DC_String2 = contentArr[5];
+						obj.param6 = contentArr[6];
+						solarData.addItem(obj);
+					}
+				}
+				
+				// Apply a reverse sorting order on the date
+				var sort:Sort = new Sort();
+				sort.fields = [new SortField("date", false, true)];
+				solarData.sort = sort;
+				solarData.refresh();
+				
+				// Update the text fields and rotate the indicator
+				updateScreen();
+			}
+			
+			private function updateScreen():void {
+				current.text = solarData.getItemAt(0).P_MomentTotal + " W";
+				total.text = (solarData.getItemAt(0).P_TotalDay / 1000) + " kWh";
+				var rotate:Rotate = new Rotate(arrow);
+				rotate.duration = 2000;
+				rotate.easer = easer;
+				rotate.angleFrom = arrow.rotation;
+				// Trial and error has proven that 1W equals a rotation of 0.0871 degrees.
+				rotate.angleTo = 151 + (0.0871 * solarData.getItemAt(0).P_MomentTotal);
+				rotate.play(); 
+			}
+			
+			protected function loader_faultHandler(event:FaultEvent):void
+			{
+				Alert.show(event.fault.faultString, event.fault.faultCode);
+			}
+
+		]]>
+
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:HTTPService id="loader" url="getSolarData.php"
+					   result="convertData(event)"
+					   fault="loader_faultHandler(event)"
+					   showBusyCursor="true"
+					   method="POST"/>
+		<s:Sine id="easer"/>
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="Page2" fc:color="0x0081cc"/>
+	</s:states>
+	<s:Rect height="199" d:locked="true" width="199" x="0.5" y="0.5">
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#364359" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#364359"/>
+		</s:fill>
+	</s:Rect>
+	<fx:DesignLayer d:id="2" d:locked="true" ai:objID="49342900" d:userLabel="Outer edge">
+		<s:Ellipse height="200" d:id="3" ai:objID="49376e00" width="200" x="0" y="0">
+			<s:fill>
+				<s:LinearGradient rotation="71.2462" scaleX="200.002" x="67.8765" y="5.33614">
+					<s:GradientEntry color="0xCCCCCC" ratio="0"/>
+					<s:GradientEntry ratio="1"/>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Ellipse>
+		<s:Group ai:objID="4933b400" x="87" y="87">
+			<s:Path data="M 12.412 0 C 19.278 0 24.84 5.562 24.84 12.428 C 24.84 19.278 19.278 24.841 12.412 24.841 C 5.563 24.841 0 19.278 0 12.428 C 0 5.562 5.563 0 12.412 0 Z" ai:objID="49370b00" winding="nonZero" x="0.58" y="0.58">
+				<s:fill>
+					<s:LinearGradient rotation="51.7447" scaleX="25.3011" x="4.60156" y="2.50635">
+						<s:GradientEntry color="0xCCCCCC" ratio="0"/>
+						<s:GradientEntry ratio="1"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Path>
+		</s:Group>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="4" d:locked="true" ai:objID="4933d700" d:userLabel="Outer color">
+		<s:Ellipse height="198" d:id="5" ai:objID="49376200" width="198" x="1" y="1">
+			<s:fill>
+				<s:RadialGradient rotation="71.2462" scaleX="197.95" scaleY="197.95" x="99.0025" y="99.0014">
+					<s:GradientEntry color="0xCCCCCC" ratio="0.90303"/>
+					<s:GradientEntry color="0x4D4D4D" ratio="1"/>
+				</s:RadialGradient>
+			</s:fill>
+		</s:Ellipse>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="6" d:locked="true" ai:objID="4933d600" d:userLabel="Inner edge">
+		<s:Ellipse height="180" d:id="7" ai:objID="49375f00" width="180" x="10" y="10">
+			<s:fill>
+				<s:RadialGradient rotation="71.2462" scaleX="180.006" scaleY="180.006" x="90.0278" y="90.0272">
+					<s:GradientEntry ratio="0.860606"/>
+					<s:GradientEntry color="0xE6E6E6" ratio="1"/>
+				</s:RadialGradient>
+			</s:fill>
+		</s:Ellipse>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="8" d:locked="true" ai:objID="4933d500" d:userLabel="Gauge edge">
+		<s:Ellipse height="170" ai:objID="49375c00" width="170" x="15" y="15">
+			<s:fill>
+				<s:SolidColor color="0xB3B3B3"/>
+			</s:fill>
+		</s:Ellipse>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="9" d:locked="true" ai:objID="4933d400" d:userLabel="Scale">
+		<s:Line ai:objID="49375900" x="100" y="15" yFrom="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49375600" x="100" y="15" yTo="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49375480" x="74" xTo="3" y="19" yTo="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49375300" x="122" xFrom="3" y="19" yTo="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49375180" x="20" xTo="10" y="71" yTo="3">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49375000" x="16" xTo="10" y="96">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374e80" x="33" xTo="8" y="48" yTo="6">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374d00" x="51" xFrom="6" y="31" yFrom="8">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374b80" x="33" xTo="8" y="48" yTo="6">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374a00" x="75" xTo="2" y="19" yTo="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374880" x="18" xTo="10" y="118" yFrom="3">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374700" x="91" xTo="1" y="174" yFrom="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374580" x="115" xFrom="2" y="173" yFrom="10">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374400" x="45" xFrom="7" y="157" yTo="7">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374280" x="67" xTo="4" y="169" yFrom="9">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49374100" x="28" xTo="9" y="139" yFrom="5">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49373f80" x="136" xFrom="5" y="165" yFrom="9">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49373e00" x="170" xFrom="9" y="71" yTo="3">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49373c80" x="142" xTo="6" y="31" yFrom="8">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line ai:objID="49373b00" x="159" xFrom="8" y="48" yTo="6">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="0xF2F2F2" joints="miter" miterLimit="4" scaleMode="normal" weight="2"/>
+			</s:stroke>
+		</s:Line>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="10" d:locked="true" ai:objID="4933d300" d:userLabel="Numbers">
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="11" kerning="on" lineHeight="120%" ai:objID="4933d200" d:userLabel="0" whiteSpaceCollapse="preserve" x="132" y="158">
+			<s:content><s:p d:id="12" whiteSpaceCollapse="collapse"><s:span d:id="13">0</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="14" kerning="on" lineHeight="120%" ai:objID="4933d100" d:userLabel="200" whiteSpaceCollapse="preserve" x="109" y="164">
+			<s:content><s:p d:id="15" whiteSpaceCollapse="collapse"><s:span d:id="16">200</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="17" kerning="on" lineHeight="120%" ai:objID="4933d000" d:userLabel="400" whiteSpaceCollapse="preserve" x="87" y="165">
+			<s:content><s:p d:id="18" whiteSpaceCollapse="collapse"><s:span d:id="19">400</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="20" kerning="on" lineHeight="120%" ai:objID="4933cf00" d:userLabel="600" whiteSpaceCollapse="preserve" x="66" y="160">
+			<s:content><s:p d:id="21" whiteSpaceCollapse="collapse"><s:span d:id="22">600</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="23" kerning="on" lineHeight="120%" ai:objID="4933ce00" d:userLabel="800" whiteSpaceCollapse="preserve" x="53" y="149">
+			<s:content><s:p d:id="24" whiteSpaceCollapse="collapse"><s:span d:id="25">800</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="26" kerning="on" lineHeight="120%" ai:objID="4933cd00" d:userLabel="1000" whiteSpaceCollapse="preserve" x="38" y="134">
+			<s:content><s:p d:id="27" whiteSpaceCollapse="collapse"><s:span d:id="28">1000</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="29" kerning="on" lineHeight="120%" ai:objID="4933cc00" d:userLabel="1200" whiteSpaceCollapse="preserve" x="30" y="114">
+			<s:content><s:p d:id="30" whiteSpaceCollapse="collapse"><s:span d:id="31">1200</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="32" kerning="on" lineHeight="120%" ai:objID="4933cb00" d:userLabel="1400" whiteSpaceCollapse="preserve" x="28" y="93">
+			<s:content><s:p d:id="33" whiteSpaceCollapse="collapse"><s:span d:id="34">1400</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="35" kerning="on" lineHeight="120%" ai:objID="4933ca00" d:userLabel="1600" whiteSpaceCollapse="preserve" x="32" y="72">
+			<s:content><s:p d:id="36" whiteSpaceCollapse="collapse"><s:span d:id="37">1600</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="38" kerning="on" lineHeight="120%" ai:objID="4933c900" d:userLabel="1800" whiteSpaceCollapse="preserve" x="42" y="55">
+			<s:content><s:p d:id="39" whiteSpaceCollapse="collapse"><s:span d:id="40">1800</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="41" kerning="on" lineHeight="120%" ai:objID="4933c800" d:userLabel="2000" whiteSpaceCollapse="preserve" x="57" y="41">
+			<s:content><s:p d:id="42" whiteSpaceCollapse="collapse"><s:span d:id="43">2000</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="44" kerning="on" lineHeight="120%" ai:objID="4933c700" d:userLabel="2200" whiteSpaceCollapse="preserve" x="72" y="33">
+			<s:content><s:p d:id="45" whiteSpaceCollapse="collapse"><s:span d:id="46">2200</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="47" kerning="on" lineHeight="120%" ai:objID="4933c600" d:userLabel="2400" whiteSpaceCollapse="preserve" x="91" y="29">
+			<s:content><s:p d:id="48" whiteSpaceCollapse="collapse"><s:span d:id="49">2400</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="50" kerning="on" lineHeight="120%" ai:objID="4933c500" d:userLabel="2600" whiteSpaceCollapse="preserve" x="113" y="32">
+			<s:content><s:p d:id="51" whiteSpaceCollapse="collapse"><s:span d:id="52">2600</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="53" kerning="on" lineHeight="120%" ai:objID="4933c400" d:userLabel="2800" whiteSpaceCollapse="preserve" x="125" y="41">
+			<s:content><s:p d:id="54" whiteSpaceCollapse="collapse"><s:span d:id="55">2800</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="56" kerning="on" lineHeight="120%" ai:objID="4933c300" d:userLabel="3000" whiteSpaceCollapse="preserve" x="140" y="54">
+			<s:content><s:p d:id="57" whiteSpaceCollapse="collapse"><s:span d:id="58">3000</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="8" d:id="59" kerning="on" lineHeight="120%" ai:objID="4933c200" d:userLabel="3200" whiteSpaceCollapse="preserve" x="152" y="72">
+			<s:content><s:p d:id="60" whiteSpaceCollapse="collapse"><s:span d:id="61">3200</s:span></s:p></s:content>
+		</s:RichText>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="62" d:locked="true" ai:objID="4933c100" d:userLabel="Total">
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="10" d:id="63" kerning="on" lineHeight="120%" ai:objID="4933c000" d:userLabel="Daily Total:" whiteSpaceCollapse="preserve" right="85" y="132">
+			<s:content><s:p d:id="64" whiteSpaceCollapse="collapse"><s:span d:id="65">Daily Total:</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="10" d:id="66" kerning="on" lineHeight="120%" ai:objID="4933bf00" d:userLabel="Current:" whiteSpaceCollapse="preserve" right="85" y="119">
+			<s:content><s:p d:id="67" whiteSpaceCollapse="collapse"><s:span d:id="68">Current:</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText id="current" color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="10" d:id="69" kerning="on" lineHeight="120%" ai:objID="4933be00" d:userLabel="2400W" whiteSpaceCollapse="preserve" x="125" y="119"/>
+		<s:RichText id="total" color="0xFFFFFF" fontFamily="Myriad Pro" fontSize="10" d:id="72" kerning="on" lineHeight="120%" ai:objID="4933bd00" d:userLabel="3.57kWh" whiteSpaceCollapse="preserve" x="125" y="132"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="75" ai:objID="4933bc00" d:userLabel="Arrow">
+		<fx:DesignLayer d:id="76" flm:knockout="false" ai:objID="4933b700" d:userLabel="New Symbol">
+			<components:CustomComponent1 height="164" id="arrow" rotation="151" d:userLabel="CustomComponent1" width="7" horizontalCenter="0" verticalCenter="0"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:id="78" ai:objID="4933ba00" d:userLabel="Knob">
+			<s:Ellipse height="25" d:id="79" ai:objID="49371880" width="25" horizontalCenter="0" verticalCenter="0">
+				<s:fill>
+					<s:LinearGradient rotation="71.2462" scaleX="25.1919" x="8.54991" y="0.671402">
+						<s:GradientEntry color="0xCCCCCC" ratio="0"/>
+						<s:GradientEntry ratio="1"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Ellipse>
+		</fx:DesignLayer>
+	</fx:DesignLayer>
+</s:Application>

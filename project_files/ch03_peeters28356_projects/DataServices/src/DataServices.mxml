@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/halo" 
+			   xmlns:services="com.domain.project.services.*">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.controls.Alert;
+
+			protected function dataGrid_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllPersonsResult.token = personServices.getAllPersons();
+			}
+
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<s:CallResponder id="getAllPersonsResult"/>
+		<services:PersonServices id="personServices" fault="Alert.show(event.fault.faultString + '\n' + event.fault.faultDetail)" showBusyCursor="true"/>
+	</fx:Declarations>
+	
+	<mx:DataGrid x="10" y="10" id="dataGrid" creationComplete="dataGrid_creationCompleteHandler(event)" dataProvider="{getAllPersonsResult.lastResult}">
+		<mx:columns>
+			<mx:DataGridColumn headerText="personId" dataField="personId"/>
+			<mx:DataGridColumn headerText="firstname" dataField="firstname"/>
+			<mx:DataGridColumn headerText="lastname" dataField="lastname"/>
+			<mx:DataGridColumn headerText="phone" dataField="phone"/>
+			<mx:DataGridColumn headerText="email" dataField="email"/>
+		</mx:columns>
+	</mx:DataGrid>
+</s:Application>

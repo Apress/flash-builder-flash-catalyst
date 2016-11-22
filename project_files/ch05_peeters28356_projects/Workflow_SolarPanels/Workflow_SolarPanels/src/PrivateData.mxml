@@ -1,0 +1,173 @@
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008" xmlns:ATE="http://ns.adobe.com/ate/2009">
+	<fx:Private>
+		<ai:PrivateElement d:ref="#1">
+			<ai:SaveOptions>
+				<ai:Dict data="B includeObjectOutsideArtboard 0 B writeImages 1 I versionKey 1 B includeXMP 0 B includeSymbol 0 B aiEditCap 1 I expandBlendsOption 5 B downsampleLinkedImages 1 I preserveGradientPolicy 3 I rasterizeResolution 72 I preserveFilterPolicy 3 I preserveTextPolicy 3 "/>
+			</ai:SaveOptions>
+			<ai:DocData base="GaugeTotal.assets/images" globalOffsetV="200" rulerCanvasDiffH="100.5" rulerCanvasDiffV="-99.5">
+				<ai:DocRasterSettings>
+					<ai:Dict data="B mask 0 B spot 0 B alis 0 R padd 36 I dpi. 72 I colr 4 "/>
+				</ai:DocRasterSettings>
+			</ai:DocData>
+			<ai:AutoGenImageList>
+				<ai:Dict/>
+			</ai:AutoGenImageList>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="065008ABC5FB319E47C26F6639AA2C66" d:ref="#2">
+			<ai:LayerOptions color="5 79.31 257 128.502" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement alternate="1" flm:hashcode="04B5003FF326E0CC29760C27E1B5379A" d:ref="#3">
+			<ai:Ellipse height="200" knockout="0" width="200" x="-0" y="0">
+				<ai:Fill color="4">
+					<ai:Gradient angle="-71.246" gradientType="linear" length="200" originX="67.876" originY="5.336">
+						<ai:GradientStops>
+							<ai:GradientStop color="0 0.2" rampPoint="0"/>
+							<ai:GradientStop color="0 1" rampPoint="100"/>
+						</ai:GradientStops>
+					</ai:Gradient>
+				</ai:Fill>
+			</ai:Ellipse>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="E7475D6AA29A8CB76F163DC3C6BDB58B" d:ref="#4">
+			<ai:LayerOptions color="5 79.31 79.31 257" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement alternate="1" flm:hashcode="D169FAE1CACF8AC9F96DF805D4285BB3" d:ref="#5">
+			<ai:Ellipse height="197.949" knockout="0" width="197.949" x="1.024" y="1.026">
+				<ai:Fill color="4">
+					<ai:Gradient angle="-71.246" gradientType="radial" length="98.975" originX="99.002" originY="99.001">
+						<ai:GradientStops>
+							<ai:GradientStop color="0 0.2" rampPoint="90.303"/>
+							<ai:GradientStop color="0 0.7" rampPoint="100"/>
+						</ai:GradientStops>
+					</ai:Gradient>
+				</ai:Fill>
+			</ai:Ellipse>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="5B3002A3C657AA45F54353966A3555B4" d:ref="#6">
+			<ai:LayerOptions color="5 79.31 257 79.31" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement alternate="1" flm:hashcode="B01954ED60BD964B61B5B7E88311530B" d:ref="#7">
+			<ai:Ellipse height="180.006" knockout="0" width="180.006" x="9.996" y="9.997">
+				<ai:Fill color="4">
+					<ai:Gradient angle="-71.246" gradientType="radial" length="90.003" originX="90.028" originY="90.027">
+						<ai:GradientStops>
+							<ai:GradientStop color="0 1" rampPoint="86.061"/>
+							<ai:GradientStop color="0 0.1" rampPoint="100"/>
+						</ai:GradientStops>
+					</ai:Gradient>
+				</ai:Fill>
+			</ai:Ellipse>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="F3D30279D7823645BF5768703F38CAA5" d:ref="#8">
+			<ai:LayerOptions color="5 257 79.31 257" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="55D3B4D505663573D5693FAE9717F7A5" d:ref="#9">
+			<ai:LayerOptions color="5 79.31 257 257" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="CFE2A2ED20BA70E81D0706295A271D90" d:ref="#10">
+			<ai:LayerOptions color="5 128.502 128.502 128.502" locked="1"/>
+		</ai:PrivateElement>
+		<ATE:ATEAttributes flm:hashcode="340E54E43CDB46E3A040366670202910" d:ref="#11"/>
+		<ATE:ATEAttributes d:ref="#12"/>
+		<ATE:ATEAttributes d:ref="#13"/>
+		<ATE:ATEAttributes flm:hashcode="4CD2F59747C35EE9D51DC160F9F7B82A" d:ref="#14"/>
+		<ATE:ATEAttributes d:ref="#15"/>
+		<ATE:ATEAttributes d:ref="#16"/>
+		<ATE:ATEAttributes flm:hashcode="4E95C1A56E5B86E145513F584D3A56C8" d:ref="#17"/>
+		<ATE:ATEAttributes d:ref="#18"/>
+		<ATE:ATEAttributes d:ref="#19"/>
+		<ATE:ATEAttributes flm:hashcode="1F68B18E43C4CA76A64DD8DF212DE73B" d:ref="#20"/>
+		<ATE:ATEAttributes d:ref="#21"/>
+		<ATE:ATEAttributes d:ref="#22"/>
+		<ATE:ATEAttributes flm:hashcode="37AEDB8D1DF1D6684B58BB9EE04AD76E" d:ref="#23"/>
+		<ATE:ATEAttributes d:ref="#24"/>
+		<ATE:ATEAttributes d:ref="#25"/>
+		<ATE:ATEAttributes flm:hashcode="1FFB929B7D3805FE1BBA036560804AB9" d:ref="#26"/>
+		<ATE:ATEAttributes d:ref="#27"/>
+		<ATE:ATEAttributes d:ref="#28"/>
+		<ATE:ATEAttributes flm:hashcode="B64CAC81C0C3F0A5FA2D4EEF1F249ED2" d:ref="#29"/>
+		<ATE:ATEAttributes d:ref="#30"/>
+		<ATE:ATEAttributes d:ref="#31"/>
+		<ATE:ATEAttributes flm:hashcode="96BEDFFDF63CFBD53081F9D1FC9A7F2E" d:ref="#32"/>
+		<ATE:ATEAttributes d:ref="#33"/>
+		<ATE:ATEAttributes d:ref="#34"/>
+		<ATE:ATEAttributes flm:hashcode="6161C6AA3EC56BD8C009E82439500F7E" d:ref="#35"/>
+		<ATE:ATEAttributes d:ref="#36"/>
+		<ATE:ATEAttributes d:ref="#37"/>
+		<ATE:ATEAttributes flm:hashcode="13AF362B9E03AFD3357F1379417D7D7A" d:ref="#38"/>
+		<ATE:ATEAttributes d:ref="#39"/>
+		<ATE:ATEAttributes d:ref="#40"/>
+		<ATE:ATEAttributes flm:hashcode="5A2BBBA8FD99A207BF1FDC394D55A986" d:ref="#41"/>
+		<ATE:ATEAttributes d:ref="#42"/>
+		<ATE:ATEAttributes d:ref="#43"/>
+		<ATE:ATEAttributes flm:hashcode="C3809392B07B37303D160C1C98762FEA" d:ref="#44"/>
+		<ATE:ATEAttributes d:ref="#45"/>
+		<ATE:ATEAttributes d:ref="#46"/>
+		<ATE:ATEAttributes flm:hashcode="1D29169D5E38E7E15942EE1B578E4B43" d:ref="#47"/>
+		<ATE:ATEAttributes d:ref="#48"/>
+		<ATE:ATEAttributes d:ref="#49"/>
+		<ATE:ATEAttributes flm:hashcode="857D9150105D41BC467A2F865BF8F4F5" d:ref="#50"/>
+		<ATE:ATEAttributes d:ref="#51"/>
+		<ATE:ATEAttributes d:ref="#52"/>
+		<ATE:ATEAttributes flm:hashcode="3CE67CEDD388C3842BF6A51B492A28E3" d:ref="#53"/>
+		<ATE:ATEAttributes d:ref="#54"/>
+		<ATE:ATEAttributes d:ref="#55"/>
+		<ATE:ATEAttributes flm:hashcode="1058C31319C839C43EE70FDB2B8044BE" d:ref="#56"/>
+		<ATE:ATEAttributes d:ref="#57"/>
+		<ATE:ATEAttributes d:ref="#58"/>
+		<ATE:ATEAttributes flm:hashcode="693BC735226BAEB926A557766D5CCACB" d:ref="#59"/>
+		<ATE:ATEAttributes d:ref="#60"/>
+		<ATE:ATEAttributes d:ref="#61"/>
+		<ai:PrivateElement flm:hashcode="E4678FC61877AE116767CA89D1989D37" d:ref="#62">
+			<ai:LayerOptions color="5 0 0 0" locked="1"/>
+		</ai:PrivateElement>
+		<ATE:ATEAttributes flm:hashcode="D72AE56C9EB0F7EE10A9008230288169" d:ref="#63"/>
+		<ATE:ATEAttributes d:ref="#64"/>
+		<ATE:ATEAttributes d:ref="#65"/>
+		<ATE:ATEAttributes flm:hashcode="C16143905E2D855E792170D2676E9CFC" d:ref="#66"/>
+		<ATE:ATEAttributes d:ref="#67"/>
+		<ATE:ATEAttributes d:ref="#68"/>
+		<ATE:ATEAttributes flm:hashcode="6B1BD5A291A56F4F9AAD20198FB42F64" d:ref="#69"/>
+		<ATE:ATEAttributes d:ref="#70"/>
+		<ATE:ATEAttributes d:ref="#71"/>
+		<ATE:ATEAttributes flm:hashcode="77D278E3A49E73A653CD306D781878B9" d:ref="#72"/>
+		<ATE:ATEAttributes d:ref="#73"/>
+		<ATE:ATEAttributes d:ref="#74"/>
+		<ai:PrivateElement flm:hashcode="48A6267F99FFE5FFD9868B9CD27D88BE" d:ref="#75">
+			<ai:LayerOptions color="5 257 257 79.31" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="8019B8C850CEC9CA0088AA4E7F2306F0" d:ref="#76">
+			<ai:LayerOptions color="5 79.31 257 257"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement alternate="1" flm:hashcode="D7BBE8C6486550191FF504FBBBD696A1" d:ref="#77">
+			<ai:Path data="M 99.9 18.394L 101.402 59.198L 102.904 100L 99.9 100L 96.896 100L 98.398 59.198L 99.9 18.394Z" knockout="0">
+				<ai:Fill color="4">
+					<ai:Gradient angle="-90.386" gradientType="linear" length="81.624" originX="3.554" originY="0.004">
+						<ai:GradientStops>
+							<ai:GradientStop color="5 1 0 0" rampPoint="0"/>
+							<ai:GradientStop color="5 0.69 0 0" rampPoint="100"/>
+						</ai:GradientStops>
+					</ai:Gradient>
+				</ai:Fill>
+			</ai:Path>
+		</ai:PrivateElement>
+		<ai:PrivateElement flm:hashcode="4E1C27723FA48ECDC7758E13C692F5A7" d:ref="#78">
+			<ai:LayerOptions color="5 257 79.31 79.31" locked="1"/>
+		</ai:PrivateElement>
+		<ai:PrivateElement alternate="1" flm:hashcode="3F10199173ACCB3E16168DEEF953DD14" d:ref="#79">
+			<ai:Ellipse height="25.192" knockout="0" width="25.192" x="87.224" y="87.406">
+				<ai:Fill color="4">
+					<ai:Gradient angle="-71.246" gradientType="linear" length="25.192" originX="8.55" originY="0.671">
+						<ai:GradientStops>
+							<ai:GradientStop color="0 0.2" rampPoint="0"/>
+							<ai:GradientStop color="0 1" rampPoint="100"/>
+						</ai:GradientStops>
+					</ai:Gradient>
+				</ai:Fill>
+			</ai:Ellipse>
+		</ai:PrivateElement>
+		<d:FontMap>
+			<d:Map fontFamily="Myriad Pro" postScriptName="MyriadPro-Regular"/>
+		</d:FontMap>
+	</fx:Private>
+</s:Group>

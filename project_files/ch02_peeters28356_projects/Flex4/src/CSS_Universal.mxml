@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+
+		global {
+			font-family: Verdana;
+			color: #333333;
+		}
+		
+		s|Panel * {
+			color: #000099;	
+		}
+	</fx:Style>
+	
+	<s:Group horizontalCenter="0" verticalCenter="0">
+		<s:layout>
+			<s:VerticalLayout/>
+		</s:layout>
+		<s:Label text="This text is affected by the global selector"/>
+		<s:Panel height="200" title="Panel container">
+			<s:layout>
+				<s:VerticalLayout paddingLeft="10" paddingTop="10" paddingRight="10"/>
+			</s:layout>
+			<s:Label text="This text is affected by the universal selector"/>
+		</s:Panel>
+	</s:Group>
+</s:Application>

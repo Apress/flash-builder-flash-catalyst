@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mate:EventMap xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:mate="http://mate.asfusion.com/" 
+		 xmlns:managers="be.flexpert.contact.managers.*">
+	<fx:Script>
+		<![CDATA[
+			import be.flexpert.contact.events.PersonEvent;
+			import be.flexpert.contact.managers.PersonManager;
+			import be.flexpert.contact.views.Contacts;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mate:Debugger level="{Debugger.ALL}" />
+
+		<managers:ServiceManager id="services"/>
+	
+		<mate:EventHandlers type="{PersonEvent.READ}">
+			<mate:RemoteObjectInvoker instance="{services.personService}"
+									  method="getAllPersons">
+				<mate:resultHandlers>
+					<mate:MethodInvoker generator="{PersonManager}" method="storeList" arguments="{resultObject}"/>
+				</mate:resultHandlers>
+				
+				<mate:faultHandlers>
+					<mate:CallBack method="faultHandler" arguments="{fault}"/>
+				</mate:faultHandlers>
+			</mate:RemoteObjectInvoker>		
+		</mate:EventHandlers>
+		
+		<mate:EventHandlers type="{PersonEvent.CREATE}">
+			<mate:RemoteObjectInvoker instance="{services.personService}"
+									  method="createPerson"
+									  arguments="{event.person}">
+				<mate:resultHandlers>
+					<mate:EventAnnouncer generator="{PersonEvent}" type="{PersonEvent.READ}"/>
+				</mate:resultHandlers>
+				
+				<mate:faultHandlers>
+					<mate:CallBack method="faultHandler" arguments="{fault}"/>
+				</mate:faultHandlers>
+			</mate:RemoteObjectInvoker>		
+		</mate:EventHandlers>
+		
+		<mate:EventHandlers type="{PersonEvent.UPDATE}">
+			<mate:RemoteObjectInvoker instance="{services.personService}"
+									  method="updatePerson"
+									  arguments="{event.person}">
+				<mate:resultHandlers>
+					<mate:EventAnnouncer generator="{PersonEvent}" type="{PersonEvent.READ}"/>
+				</mate:resultHandlers>
+				
+				<mate:faultHandlers>
+					<mate:CallBack method="faultHandler" arguments="{fault}"/>
+				</mate:faultHandlers>
+			</mate:RemoteObjectInvoker>		
+		</mate:EventHandlers>
+		
+		<mate:EventHandlers type="{PersonEvent.DELETE}">
+			<mate:RemoteObjectInvoker instance="{services.personService}"
+									  method="deletePerson"
+									  arguments="{event.person}">
+				<mate:resultHandlers>
+					<mate:EventAnnouncer generator="{PersonEvent}" type="{PersonEvent.READ}"/>
+				</mate:resultHandlers>
+				
+				<mate:faultHandlers>
+					<mate:CallBack method="faultHandler" arguments="{fault}"/>
+				</mate:faultHandlers>
+			</mate:RemoteObjectInvoker>		
+		</mate:EventHandlers>
+		
+		<mate:Injectors target="{Contacts}">
+			<mate:PropertyInjector targetKey="personsList" source="{PersonManager}" sourceKey="personsList"/>
+		</mate:Injectors>
+	</fx:Declarations>
+	
+</mate:EventMap>

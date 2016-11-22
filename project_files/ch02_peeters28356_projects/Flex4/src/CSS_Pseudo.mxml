@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:co="com.domain.project.controls.*">
+	
+	<fx:Style>
+		@namespace co "com.domain.project.controls.*";
+		
+		co|MyCustomTextInput:default {
+			contentBackgroundColor: #FFFFFF;
+			color: #333333;
+		}
+		co|MyCustomTextInput:error {
+			contentBackgroundColor: #CC0000;
+			color: #FFFFFF;
+		}
+	</fx:Style>
+	
+	<fx:Declarations>
+		<mx:StringValidator id="vUsername" source="{username}" property="text" triggerEvent=""/>
+		<mx:StringValidator id="vPassword" source="{password}" property="text" triggerEvent=""/>
+	</fx:Declarations>
+	
+	<mx:Form defaultButton="{btnLogin}" horizontalCenter="0" verticalCenter="0">
+		<mx:FormHeading label="Login to application"/>
+		<mx:FormItem label="Username:" required="true">
+			<co:MyCustomTextInput id="username" width="200"/>
+		</mx:FormItem>
+		<mx:FormItem label="Password:" required="true">
+			<co:MyCustomTextInput id="password" width="200" displayAsPassword="true"/>
+		</mx:FormItem>
+		<mx:FormItem direction="horizontal" width="100%" horizontalAlign="right">
+			<s:Button id="btnLogin" label="Login" 
+					  click="mx.validators.Validator.validateAll([vUsername, vPassword])"/>
+			<s:Button id="btnCancel" label="Cancel"/>
+		</mx:FormItem>
+	</mx:Form>
+</s:Application>

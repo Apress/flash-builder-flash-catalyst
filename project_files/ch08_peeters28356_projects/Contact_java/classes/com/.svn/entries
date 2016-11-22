@@ -1,0 +1,31 @@
+9
+
+dir
+45
+http://192.168.1.10/svn/crius-cpp-backend/src/com
+http://192.168.1.10/svn/crius-cpp-backend
+
+
+
+2009-09-17T10:21:59.504375Z
+45
+adewinne
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+bbf07084-e1ba-4db1-942c-00a169df8108
+
+crius
+dir
+

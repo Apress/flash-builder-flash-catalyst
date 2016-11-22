@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<fx:DesignLayer d:id="3" d:userLabel="thumb">
+		<s:Rect height="54" width="12" x="0.5" y="0.5">
+			<s:fill>
+				<s:SolidColor color="#E1E1E1"/>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#808080" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Line x="3" xTo="7" y="28">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line x="4" xTo="5" y="24">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="2"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line x="4" xTo="5" y="32">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="2"/>
+			</s:stroke>
+		</s:Line>
+	</fx:DesignLayer>
+</s:Skin>

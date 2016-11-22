@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt"
+		 useHandCursor="true" buttonMode="true">
+	<fx:DesignLayer d:userLabel="image buton">
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 87.png')" d:userLabel="Layer 87" x="10" y="0"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 56.png')" d:userLabel="Layer 56" x="0" y="4"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/lijn boven copy 8.png')" d:userLabel="lijn boven copy 8" x="11" y="209"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/loup.png')" d:userLabel="loup" x="131" y="186"/>
+		<s:RichText color="#000000" fontFamily="Century Gothic" fontSize="15.24" d:userLabel="Take a closer look at the" whiteSpaceCollapse="preserve" x="27" y="226">
+			<s:content><s:p><s:span>Take a closer look at the</s:span></s:p></s:content>
+		</s:RichText>
+		<s:RichText color="#000000" fontFamily="Century Gothic" fontSize="18.492" kerning="off" d:userLabel="photos" visible="false" whiteSpaceCollapse="preserve" x="213" y="222">
+			<s:content><s:p><s:span>p</s:span><s:span kerning="auto">hotos</s:span></s:p></s:content>
+		</s:RichText>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/photos copy.png')" d:userLabel="photos copy" x="214" y="212"/>
+	</fx:DesignLayer>
+</s:Group>

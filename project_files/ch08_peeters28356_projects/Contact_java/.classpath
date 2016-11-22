@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-rds-server.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-common.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-core.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-data.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-data-req.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-opt.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-proxy.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-messaging-remoting.jar"/>
+	<classpathentry kind="lib" path="C:/lcds3/tomcat/webapps/lcds/WEB-INF/lib/flex-rds-lcds.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

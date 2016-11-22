@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright Steven Peeters (c), 2010 -->
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/halo" 
+					   showStatusBar="false"
+					   creationComplete="initApp()" xmlns:mx1="library://ns.adobe.com/flex/mx">
+
+	<fx:Style source="../css/styles.css"/>
+
+	<fx:Script source="controllers/PhotoResizer.as"/>
+	
+	<s:Rect x="0" y="0" width="900" height="600" radiusX="20">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:entries>
+					<s:GradientEntry color="#630382"/>
+					<s:GradientEntry color="#7803cb"/>
+				</s:entries>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="20" y="80" width="500" height="500">
+		<s:stroke>
+			<s:SolidColorStroke color="#000000" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="#ffffff"/>
+		</s:fill>
+	</s:Rect>
+
+	<s:Button right="20" y="20" label="X" id="btnClose" width="30" height="30" click="btnClose_clickHandler(event)"/>
+
+	<s:Label x="20" y="15" text="Photo Resizer" styleName="titleLabel"/>
+	
+	<s:Group x="20" y="80" width="500" height="500">
+		<mx1:Image maxWidth="500" maxHeight="500" maintainAspectRatio="true"
+				  horizontalCenter="0" verticalCenter="0"
+				  source="{newImageData}" id="thumbnail"/>
+	</s:Group>
+
+<s:Group right="20" top="80" bottom="20" width="340">
+	
+	<s:Label text="Select an image file" styleName="textLabel"/>
+	
+	<s:Group left="0" right="0" top="30">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:TextInput width="262" id="fileInput" editable="false"/>
+		<s:Button label="Browse..." id="btnBrowse" click="btnBrowse_clickHandler(event)"/>
+	</s:Group>
+	
+	<s:Group right="0" bottom="0">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Button label="Save" id="btnSave" click="btnSave_clickHandler(event)"/>
+		<s:Button label="Reset" id="btnReset" click="btnReset_clickHandler(event)"/>
+	</s:Group>
+	
+	<s:Group left="0" top="70">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label width="180" text="Original width:" styleName="textLabel"/>
+		<s:TextInput id="origWidth" maxChars="4" width="37" editable="false"/>
+		<s:Label text="px" styleName="textLabel"/>
+	</s:Group>
+	<s:Group left="0" top="98">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label width="180" text="Original height:" styleName="textLabel"/>
+		<s:TextInput id="origHeight" maxChars="4" width="37" editable="false"/>
+		<s:Label text="px" styleName="textLabel"/>
+	</s:Group>
+
+	<s:Label y="170" text="Adjust the thumbnail settings" styleName="textLabel"/>
+	
+	<s:Group left="0" right="0" top="210">
+		<s:layout>
+			<s:HorizontalLayout verticalAlign="middle"/>
+		</s:layout>
+		<s:HSlider id="slider" left="20" width="250" value="100" maximum="100" showDataTip="false"
+				   click="slider_changeHandler(event)"
+				   thumbRelease="slider_changeHandler(event)"/>
+		<s:Label text="{slider.value}%" textAlign="right" styleName="textLabel" width="100%"/>
+	</s:Group>
+
+	<s:Group left="0" top="240">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label width="180" text="Thumbnail width:" styleName="textLabel"/>
+		<s:TextInput id="currentWidth" maxChars="4" width="37" editable="false"/>
+		<s:Label text="px" styleName="textLabel"/>
+	</s:Group>
+	<s:Group left="0" top="268">
+		<s:layout>
+			<s:HorizontalLayout/>
+		</s:layout>
+		<s:Label width="180" text="Thumbnail height:" styleName="textLabel"/>
+		<s:TextInput id="currentHeight" maxChars="4" width="37" editable="false"/>
+		<s:Label text="px" styleName="textLabel"/>
+	</s:Group>
+
+</s:Group>
+	
+</s:WindowedApplication>

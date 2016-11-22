@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:ai="http://ns.adobe.com/ai/2009">
+	<s:Rect y="0.5" height="163" width="5" x="0.5" visible="false">
+		<s:stroke>
+			<s:SolidColorStroke color="0x5380D0" caps="none" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:Path data="M 3.004 0 L 4.506 40.804 L 6.008 81.606 L 3.004 81.606 L 0 81.606 L 1.502 40.804 L 3.004 0 Z" d:id="77" ai:objID="491c8580" winding="nonZero" x="0" y="0" width="7">
+		<s:fill>
+			<s:LinearGradient rotation="90.3861" scaleX="81.6243" x="3.55419" y="0.00387573">
+				<s:GradientEntry color="0xFF0000" ratio="0"/>
+				<s:GradientEntry color="0xB00000" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Path>
+</s:Group>

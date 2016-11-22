@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<s:Application xmlns:ATE="http://ns.adobe.com/ate/2009" 
+			   xmlns:ai="http://ns.adobe.com/ai/2009" 
+			   xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" 
+			   xmlns:lib="assets.graphics.TwitterSearch.*" 
+			   xmlns:d="http://ns.adobe.com/fxg/2008/dt" 
+			   xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:flm="http://ns.adobe.com/flame/2008" 
+			   backgroundColor="#FFFFFF" height="417" 
+			   preloaderChromeColor="#FFFFFF" width="305">
+	<fx:Style source="Main.css"/>
+	<fx:Script><![CDATA[
+			protected function button_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Page1' ) {
+					currentState='Page2';
+				}
+				if ( state == 'Page2' ) {
+					currentState='Page1';
+				}
+			}
+		]]></fx:Script>
+	<s:states>
+		<s:State name="Page1"/>
+		<s:State name="Page2"/>
+	</s:states>
+	<fx:DesignLayer d:id="2" d:userLabel="Application">
+		<s:Rect xmlns:ns60447="http://ns.adobe.com/thermo/2009" height="42" id="rect2" ns60447:id="2" d:userLabel="search background" width="304" x="0.5" y="10.5" y.Page1="51.5">
+			<s:fill>
+				<s:SolidColor color="#E8E8E8"/>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#808080" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Rect height="364" d:userLabel="list background" width="304" x="0.5" y="52.5">
+			<s:fill>
+				<s:SolidColor color="#F6F6F6"/>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#949494" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Button click="button_clickHandler()" id="button2" skinClass="components.Button2" x="0" y="0" y.Page1="41"/>
+		<s:Button skinClass="components.Button3" x="294" y="43" id="button3" y.Page2="1"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="4" d:userLabel="Search">
+		<s:TextInput id="textinput1" skinClass="components.searchinputTextInput" text="" visible.Page1="false" x="11" y="21"/>
+		<s:Button id="button1" skinClass="components.Button1" visible.Page1="false" x="228" y="21"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:id="6" d:userLabel="Content">
+		<s:List skinClass="components.DataList1" x="1" y="52">
+			<s:ArrayCollection>
+				<fx:Object image1="@Embed('/assets/images/TwitterSearch/aikido-msn.png')" text1="I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex." text2="AikiSteve"/>
+				<fx:Object image1="@Embed('/assets/images/TwitterSearch/aikido-msn.png')" text1="I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex." text2="AikiSteve"/>
+				<fx:Object image1="@Embed('/assets/images/TwitterSearch/aikido-msn.png')" text1="I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex." text2="AikiSteve"/>
+				<fx:Object image1="@Embed('/assets/images/TwitterSearch/aikido-msn.png')" text1="I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex." text2="AikiSteve"/>
+				<fx:Object image1="@Embed('/assets/images/TwitterSearch/aikido-msn.png')" text1="I’m trying to create a simplistic twitter client application to show you the way we handle transitions in Flash Catalyst as opposed to Flex." text2="AikiSteve"/>
+			</s:ArrayCollection>
+		</s:List>
+	</fx:DesignLayer>
+<s:transitions>
+	<s:Transition autoReverse="true" fromState="Page2" toState="Page1">
+		<s:Parallel>
+			<s:Parallel target="{button1}">
+				<s:Fade duration="500" startDelay="0"/>
+			</s:Parallel>
+			<s:Parallel target="{textinput1}">
+				<s:Fade duration="500" startDelay="0"/>
+			</s:Parallel>
+			<s:Parallel target="{rect2}">
+				<s:Move autoCenterTransform="true" duration="500" startDelay="450"/>
+			</s:Parallel>
+			<s:Parallel target="{button2}">
+				<s:Move autoCenterTransform="true" duration="500" startDelay="450"/>
+			</s:Parallel>
+			<s:Parallel target="{button3}">
+				<s:Move duration="500" autoCenterTransform="true"/>
+			</s:Parallel>
+		</s:Parallel>
+	</s:Transition>
+	<s:Transition autoReverse="true" fromState="Page1" toState="Page2">
+		<s:Parallel>
+			<s:Parallel target="{rect2}">
+				<s:Move autoCenterTransform="true" duration="500"/>
+			</s:Parallel>
+			<s:Parallel target="{button2}">
+				<s:Move autoCenterTransform="true" duration="500"/>
+			</s:Parallel>
+			<s:Parallel target="{textinput1}">
+				<s:Fade duration="500" startDelay="450"/>
+			</s:Parallel>
+			<s:Parallel target="{button1}">
+				<s:Fade duration="500" startDelay="450"/>
+			</s:Parallel>
+			<s:Parallel target="{button3}">
+				<s:Move duration="500" autoCenterTransform="true"/>
+			</s:Parallel>
+		</s:Parallel>
+	</s:Transition>
+</s:transitions>
+</s:Application>

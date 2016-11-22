@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Form xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var person:Object;
+			
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				lblFname.text = "First name = " + person.firstname;
+				lblLname.text = "Last name = " + person.lastname;
+			}
+
+			protected function btnCancel_clickHandler(event:MouseEvent):void
+			{
+				lblFname.text = "";
+				lblLname.text = "";
+			}
+
+		]]>
+	</mx:Script>
+	
+	<!-- Add this code to implement 2-way binding in Flex 3 components -->
+	<mx:Binding source="fname.text" destination="person.firstname"/>
+	<mx:Binding source="lname.text" destination="person.lastname"/>
+
+	<mx:FormHeading label="Person details"/>
+	<mx:FormItem label="ID">
+		<mx:Label text="{person.index}"/>
+	</mx:FormItem>
+	<mx:FormItem label="First name">
+		<mx:TextInput id="fname" text="{person.firstname}"/>
+	</mx:FormItem>
+	<mx:FormItem label="Last name">
+		<mx:TextInput id="lname" text="{person.lastname}"/>
+	</mx:FormItem>
+	<mx:FormItem direction="horizontal">
+		<mx:Button id="btnSave" label="Save" click="btnSave_clickHandler(event)"/>
+		<mx:Button id="btnCancel" label="Cancel" click="btnCancel_clickHandler(event)"/>
+	</mx:FormItem>
+	
+	<mx:Spacer height="50"/>
+	
+	<mx:FormItem label="Results after change">
+		<mx:Label id="lblFname"/>
+		<mx:Label id="lblLname"/>
+	</mx:FormItem>
+</mx:Form>

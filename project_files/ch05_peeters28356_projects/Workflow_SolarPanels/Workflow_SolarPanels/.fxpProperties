@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Catalyst" parentProject="315a4e3d-a08e-4e9a-82c4-6611468d4416" projectUUID="315a4e3d-a08e-4e9a-82c4-6611468d4416" sdkVersion="4.0.0" uuid="d25941cd-2924-4c29-a687-4cbc3a56249e" version="2">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="d25941cd-2924-4c29-a687-4cbc3a56249e"/>
+    <linked location="C:/Documents and Settings/speeters.VDSBE/Application Data/Adobe/Flash Catalyst/workspace/GaugeTotal/libs" path="/libs" position="1" uuid="d25941cd-2924-4c29-a687-4cbc3a56249e"/>
+  </swc>
+  <misc/>
+  <theme/>
+</fxpProperties>

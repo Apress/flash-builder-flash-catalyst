@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <service name="PersonServices">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">com.domain.project.services.PersonServices</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">com.domain.project.services</item>
+      <item name="Destination">ColdFusion</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="ASFilesGenerated">com/domain/project/services/_Super_PersonServices.as~#~com/domain/project/services/PersonServices.as~#~</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">ColdFusion</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">com.domain.project.valueObjects</item>
+      <item name="COLDFUSION_SERVER_ROOT_URL">http://localhost:8500</item>
+      <item name="LINKED_FILE">PersonServices.cfc</item>
+      <item name="COLDFUSION_SERVER_CONTEXT_ROOT"></item>
+      <item name="CFC_CLASS_NAME">PersonServices</item>
+      <item name="CFC_RELATIVE_LOCATION">com/domain/project/services/PersonServices.cfc</item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8500/flex2gateway/</item>
+      <item name="CFC_LOCATION">C:/ColdFusion9/wwwroot/com/domain/project/services/PersonServices.cfc</item>
+    </annotation>
+    <function name="getAllPersons" return-type="PersonDTO[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">PersonDTO</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,firstname,lastname,phone,email</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="PersonDTO">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">PersonDTO</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">com.domain.project.valueObjects.PersonDTO</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">PersonServices</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">com.domain.project.valueObjects</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="ASFilesGenerated">com/domain/project/valueObjects/_PersonDTOEntityMetadata.as~#~com/domain/project/valueObjects/_Super_PersonDTO.as~#~com/domain/project/valueObjects/PersonDTO.as~#~</item>
+    </annotation>
+    <annotation name="getAllPersons">
+      <item name="propertySpecifier">id,firstname,lastname,phone,email</item>
+    </annotation>
+    <property name="personId" type="float" required="true" default="0"/>
+    <property name="id" type="float" required="true"/>
+    <property name="firstname" type="string" required="true"/>
+    <property name="lastname" type="string" required="true"/>
+    <property name="phone" type="string" required="true"/>
+    <property name="email" type="string" required="true"/>
+  </entity>
+</model>

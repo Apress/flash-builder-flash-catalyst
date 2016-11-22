@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Source of Workflow_SolarPanels</title>
+	<nodes>
+		<node label="html-template">
+			<node label="history">
+				<node icon="cssIcon" label="history.css" url="source/html-template/history/history.css.html"/>
+				<node label="history.js" url="source/html-template/history/history.js.txt"/>
+				<node icon="htmlIcon" label="historyFrame.html" url="source/html-template/history/historyFrame.html"/>
+			</node>
+			<node icon="htmlIcon" label="index.template.html" url="source/html-template/index.template.html"/>
+			<node icon="swfIcon" label="playerProductInstall.swf" url="source/html-template/playerProductInstall.swf"/>
+			<node label="swfobject.js" url="source/html-template/swfobject.js.txt"/>
+		</node>
+		<node label="libs">
+			<node label="FlashCatalyst.swc" url="source/libs/FlashCatalyst.swc"/>
+		</node>
+		<node label="php">
+			<node label="getSolarData.php" url="source/php/getSolarData.php.txt"/>
+		</node>
+		<node label="src">
+			<node label="assets">
+				<node label="images">
+				</node>
+			</node>
+			<node icon="packageIcon" label="components" expanded="true">
+				<node icon="mxmlIcon" label="CustomComponent1.mxml" url="source/components/CustomComponent1.mxml.html"/>
+			</node>
+			<node icon="cssIcon" label="Main.css" url="source/Main.css.html"/>
+			<node icon="mxmlIcon" label="PrivateData.mxml" url="source/PrivateData.mxml.html"/>
+			<node icon="mxmlAppIcon" selected="true" label="SolarLogger.mxml" url="source/SolarLogger.mxml.html"/>
+		</node>
+	</nodes>
+</index>

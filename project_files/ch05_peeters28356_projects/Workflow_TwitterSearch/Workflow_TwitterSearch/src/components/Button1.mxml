@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:flm="http://ns.adobe.com/flame/2008">
+	<fx:Metadata>[HostComponent("spark.components.Button")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:Rect height="21" id="rect1" rotation.down="180" rotation.over="180" d:userLabel="button background" width="64" x="0.5" x.down="64.5" x.over="64.5" y="0.5" y.down="21.5" y.over="21.5">
+		<s:fill>
+			<s:LinearGradient rotation="90" scaleX="63.2442" x="32" y="-5.12793">
+				<s:GradientEntry color="#FFFFFF" ratio="0"/>
+				<s:GradientEntry ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#808080" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+		<s:filters>
+			<s:GlowFilter includeIn="down" blurX="5" blurY="5" inner="true" color="#666666" strength="2" alpha="1.0" quality="2" knockout="false"/>
+		</s:filters>
+	</s:Rect>
+	<s:RichText ai:aa="2" color="#000000" columnCount="1" fontFamily="Myriad Pro" fontSize="11" d:id="5" kerning="on" d:label="ATE Text To TLF Text" text="SEARCH..." d:userLabel="SEARCH..." flm:variant="1" whiteSpaceCollapse="preserve" x="11" y="7"/>
+	<s:transitions>
+		<s:Transition fromState="down" toState="up" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{rect1}">
+					<s:Rotate duration="0" autoCenterTransform="true"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Skin>

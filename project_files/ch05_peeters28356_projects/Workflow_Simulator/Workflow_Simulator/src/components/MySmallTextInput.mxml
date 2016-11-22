@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.TextInput")]</fx:Metadata>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="disabled"/>
+	</s:states>
+	<s:BitmapImage source="@Embed('/assets/images/Simulator/yearsInput.png')" d:userLabel="yearsInput" x="0" y="0"/>
+	<s:RichEditableText color="#177904" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="99" whiteSpaceCollapse="preserve" x="15" y="6" width="14" heightInLines="1" id="textDisplay" y.normal="5" height.normal="14" x.normal="11" width.normal="22" textAlign.normal="end">
+	</s:RichEditableText>
+	<s:transitions>
+		<s:Transition fromState="normal" toState="disabled" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{textDisplay}">
+					<s:Resize duration="0"/>
+					<s:Move duration="0" autoCenterTransform="true"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Skin>

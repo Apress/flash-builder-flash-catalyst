@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" backgroundColor="#FFFFFF">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.events.ItemClickEvent;
+
+			protected function firstGroup_itemClickHandler(event:ItemClickEvent):void {
+				if(event.label == "Yes") {
+					if(currentState == "state2") {
+						currentState = "state3";
+					} else {
+						currentState = "state1";
+					}
+				} else {
+					if(currentState == "state3") {
+						currentState = "state2";
+					} else {
+						currentState = "";
+					}
+				}
+			}
+
+			protected function thirdGroup_itemClickHandler(event:ItemClickEvent):void {
+				if(event.label == "Yes") {
+					if(currentState == "state1") {
+						currentState = "state3";
+					} else {
+						currentState = "state2";
+					}
+				} else {
+					if(currentState == "state3") {
+						currentState = "state1";
+					} else {
+						currentState = "";
+					}
+				}
+			}
+
+		]]>
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="state1">
+			<mx:AddChild position="after" relativeTo="{box1}">
+				<mx:HBox id="box4">
+					<mx:Label text="Do you see the second question now?"
+							  width="300"/>
+					<mx:RadioButtonGroup id="fourthGroup"/>
+					<mx:RadioButton label="Yes"
+									group="{fourthGroup}"/>
+					<mx:RadioButton label="No"
+									group="{fourthGroup}"/>
+				</mx:HBox>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="state2">
+			<mx:AddChild position="after" relativeTo="{box3}">
+				<mx:HBox id="box5">
+					<mx:Label text="Do you see the fifth question now?"
+							  width="300"/>
+					<mx:RadioButtonGroup id="fifthGroup"/>
+					<mx:RadioButton label="Yes"
+									group="{fifthGroup}"/>
+					<mx:RadioButton label="No"
+									group="{fifthGroup}"/>
+				</mx:HBox>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="state3" basedOn="state1">
+			<mx:AddChild position="after" relativeTo="{box3}">
+				<mx:HBox id="box6">
+					<mx:Label text="Do you see the fifth question now?"
+							  width="300"/>
+					<mx:RadioButtonGroup id="sixthGroup"/>
+					<mx:RadioButton label="Yes"
+									group="{sixthGroup}"/>
+					<mx:RadioButton label="No"
+									group="{sixthGroup}"/>
+				</mx:HBox>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+
+	<mx:HBox id="box1">
+		<mx:Label text="Do you want to show the second question?"
+				  width="300"/>
+		<mx:RadioButtonGroup id="firstGroup" itemClick="firstGroup_itemClickHandler(event)"/>
+		<mx:RadioButton label="Yes"
+						group="{firstGroup}"/>
+		<mx:RadioButton label="No"
+						group="{firstGroup}"/>
+	</mx:HBox>
+	<mx:HBox id="box2">
+		<mx:Label text="Is this is the third question?"
+				  width="300"/>
+		<mx:RadioButtonGroup id="secondGroup"/>
+		<mx:RadioButton label="Yes"
+						group="{secondGroup}"/>
+		<mx:RadioButton label="No"
+						group="{secondGroup}"/>
+	</mx:HBox>
+	<mx:HBox id="box3">
+		<mx:Label text="Do you want to show the fifth question?"
+				  width="300"/>
+		<mx:RadioButtonGroup id="thirdGroup" itemClick="thirdGroup_itemClickHandler(event)"/>
+		<mx:RadioButton label="Yes"
+						group="{thirdGroup}"/>
+		<mx:RadioButton label="No"
+						group="{thirdGroup}"/>
+	</mx:HBox>
+
+</mx:Application>

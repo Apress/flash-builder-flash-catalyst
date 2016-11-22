@@ -1,0 +1,19 @@
+<languageVersion : 1.0;>
+
+kernel Grayscale
+<   namespace : "Your Namespace";
+    vendor : "Your Vendor";
+    version : 1;
+    description : "your description";
+>
+{
+    input image4 src;
+    output pixel4 dst;
+
+    void
+    evaluatePixel()
+    {
+        dst = sampleNearest(src,outCoord());
+        dst.r = dst.g = dst.b = (dst.r + dst.g + dst.b) / 3.0;
+    }
+}

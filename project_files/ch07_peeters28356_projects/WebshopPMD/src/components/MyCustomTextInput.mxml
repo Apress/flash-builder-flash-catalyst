@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Script>
+		<![CDATA[
+			protected function textInput_focusInHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Normal' ) {
+					currentState='Focus';
+				}
+			}
+
+			protected function textInput_focusOutHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Focus' ) {
+					currentState='Normal';
+				}
+			}
+			
+			public function get text():String {
+				return input.text;
+			}
+			
+			public function set text(value:String):void {
+				input.text = value;
+			}
+			
+			public function get displayAsPassword():Boolean {
+				return input.displayAsPassword;
+			}
+			
+			public function set displayAsPassword(value:Boolean):void {
+				input.displayAsPassword = value;
+			}
+
+			public function get maxChars():Number {
+				return input.maxChars;
+			}
+			
+			public function set maxChars(value:Number):void {
+				input.maxChars = value;
+			}
+			
+			public function get restrict():String {
+				return input.restrict;
+			}
+			
+			public function set restrict(value:String):void {
+				input.restrict = value;
+			}
+		]]>
+
+	</fx:Script>
+	<s:states>
+		<s:State name="Normal"/>
+		<s:State name="Focus"/>
+	</s:states>
+	<s:BitmapImage source="@Embed('/assets/images/webshop/Focus color1.png')" d:userLabel="Focus color" x="0" y="0" visible.Normal="false" id="bitmapimage1"/>
+	<s:TextInput id="input" focusAlpha="0" skinClass="components.MyTextInput" x="1" y="1" focusIn="textInput_focusInHandler()" focusOut="textInput_focusOutHandler()"/>
+	<s:transitions>
+		<s:Transition fromState="Focus" toState="Normal" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition fromState="Normal" toState="Focus" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Group>

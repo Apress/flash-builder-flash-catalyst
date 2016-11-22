@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt">
+	<fx:Metadata>[HostComponent("spark.components.ToggleButton")]</fx:Metadata>
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="down"/>
+		<s:State name="disabled"/>
+		<s:State name="upAndSelected"/>
+		<s:State name="overAndSelected"/>
+		<s:State name="downAndSelected"/>
+		<s:State name="disabledAndSelected"/>
+	</s:states>
+	<fx:DesignLayer d:userLabel="lefttab">
+		<s:BitmapImage blendMode="multiply" source="@Embed('/assets/images/webshop/Shape 1_s Drop Shadow.png')" d:userLabel="Shape 1's Drop Shadow" x="0" y="0"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Shape 1.png')" d:userLabel="Shape 1" x="1" y="0">
+			<s:mask>
+				<s:Group x="0" y="0">
+					<s:Path data="M 0.45 23 C 0.4 22.95 0.45 13.7 0.45 13.7 C 0.45 6.5 6.25 0.7 13.45 0.7 L 75.75 0.7 C 82.9 0.7 88.75 6.5 88.75 13.7 C 88.75 13.7 88.75 18.45 88.75 22.9 L 0.45 23" winding="evenOdd">
+						<s:fill>
+							<s:SolidColor color="#ff0000"/>
+						</s:fill>
+					</s:Path>
+				</s:Group>
+			</s:mask>
+		</s:BitmapImage>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/hover1.png')" d:userLabel="hover" x="1" y="0" visible.up="false" id="bitmapimage1" alpha.over="0.5" visible.disabled="false" alpha.overAndSelected="0.5"/>
+		<s:RichText color="#3d7503" fontFamily="Century Gothic" fontSize="12" id="labelDisplay" d:userLabel="Website" whiteSpaceCollapse="preserve" width="78" x="7" y="8" textAlign="center">
+		</s:RichText>
+	</fx:DesignLayer>
+	<s:transitions>
+		<s:Transition fromState="down" toState="up" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition fromState="disabledAndSelected" toState="up" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{bitmapimage1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Skin>

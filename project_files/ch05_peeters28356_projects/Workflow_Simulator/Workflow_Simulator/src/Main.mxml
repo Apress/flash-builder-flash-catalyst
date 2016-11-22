@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<s:Application xmlns:d="http://ns.adobe.com/fxg/2008/dt" 
+			   xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   backgroundColor="#FFFFFF" 
+			   width="800" height="600" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   currentState="Total"
+			   creationComplete="application1_creationCompleteHandler(event)">
+	<fx:Style source="Main.css"/>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.validators.Validator;
+			[Bindable]
+			private var _amount:Number;
+			[Bindable]
+			private var _downpayment:Number;
+			[Bindable]
+			private var _percent:Number;
+			[Bindable]
+			private var _years:Number;
+			[Bindable]
+			private var _paidOff:Number;
+			
+			[Bindable]
+			private var _graphData:ArrayCollection;
+			
+			/**
+			 * This method changes the view state depending on the choice 
+			 * the user has made with the radio buttons
+			 */
+			protected function optionTotal_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Monthly' ) {
+					currentState='Total';
+				}
+			}
+
+			/**
+			 * This method changes the view state depending on the choice 
+			 * the user has made with the radio buttons
+			 */
+			protected function optionMonthly_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Total' ) {
+					currentState='Monthly';
+				}
+			}
+
+			/**
+			 * @param FlexEvent The event tha has been thrown by the application framework
+			 * 
+			 * This method is called when the application is completely initialised.
+			 * Here you perform your own initialisation.
+			 */
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				_amount = 0;
+				_downpayment = 0;
+				_percent = 0;
+				_years = 0;
+				_paidOff = 0;
+			}
+
+			/**
+			 * This method is either called when the user changes on of the
+			 * values in the input fields by tabbing out of the field or by
+			 * hitting the <Enter> key inside of such a field.
+			 */
+			private function calculate():void {
+				var i:uint;
+				var p:Number;
+				var pattern:RegExp = new RegExp(",", "g");
+				
+				_percent = Number(percentInput.text);
+				_years = Number(yearInput.text);
+				
+				var pct:Number = _percent / 1200;
+				var months:Number = _years * 12;
+			
+				if(currentState == "Total") {
+					_amount = Number(amountInput.text.replace(pattern, ""));
+					
+					if((_amount > 0) && (_percent > 0) && (_years > 0)) {
+						// Formula is M = P [i(1+i)n]/[(1+i)n - 1]
+						_downpayment = _amount * (pct * Math.pow((1 + pct), (months))) / (Math.pow((1 + pct), months) - 1);
+						
+						// Create the array that will holds all the data
+						_graphData = new ArrayCollection();
+						for(i = 0; i < _years; i++) {
+							p = _downpayment * (i+1) * 12;
+							_graphData.addItem({year: i + 1, paidOff: p});
+						}
+						
+						_paidOff = _downpayment * months;
+						
+						chart.visible = true;
+					}
+				} else {
+					_downpayment = Number(downpaymentInput.text.replace(pattern, ""));
+					
+					if((_downpayment > 0) && (_percent > 0) && (_years > 0)) {
+						// Formula is P = M [(1+i)n - 1] / [i(1+i)n]
+						_amount = _downpayment * (Math.pow((1 + pct), months) - 1) / (pct * Math.pow((1 + pct), (months)));
+
+						// Create the array that will holds all the data
+						_graphData = new ArrayCollection();
+						for(i = 0; i < _years; i++) {
+							p = _downpayment * (i+1) * 12;
+							_graphData.addItem({year: i + 1, paidOff: p});
+						}
+						
+						_paidOff = _downpayment * months;
+						
+						chart.visible = true;
+					}					
+				}
+			}
+		]]>
+
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:NumberFormatter id="cf" precision="2" decimalSeparatorTo="." decimalSeparatorFrom="." thousandsSeparatorTo=","/>
+		<mx:NumberFormatter id="pf" precision="2" decimalSeparatorFrom="." decimalSeparatorTo="."/>
+	</fx:Declarations>
+	
+	<s:states>
+		<s:State name="Monthly"/>
+		<s:State name="Total"/>
+	</s:states>
+	<fx:DesignLayer d:locked="true" d:userLabel="Background">
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/Background.png')" d:userLabel="Background" x="0" y="0"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/top gradient.png')" d:userLabel="top gradient" x="0" y="0"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/bottom gradient.png')" d:userLabel="bottom gradient" x="0" y="478"/>
+	</fx:DesignLayer>
+	<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="10" fontWeight="bold" kerning="off" d:locked="true" d:userLabel="Disclaimer: The use of this simulator application ..." whiteSpaceCollapse="preserve" x="22" y="562">
+		<s:content><s:p><s:span>Disclaimer: </s:span><s:span fontWeight="normal">The use of this simulator application is purely informative and does not entitle you in any way to receiving the entered percentage or number of years for the downpayment.<s:br/>For a peronalized quote on your loan, you should contact one of our offices.</s:span></s:p>		</s:content>
+	</s:RichText>
+	<fx:DesignLayer d:locked="true" d:userLabel="Logo">
+		<s:RichText color="#177904" fontFamily="Lucida Calligraphy" fontSize="24" kerning="off" d:userLabel="M D S" whiteSpaceCollapse="preserve" x="557" y="135">
+			<s:content><s:p><s:span>M D S</s:span></s:p>			</s:content>
+		</s:RichText>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House ceiling.png')" d:userLabel="House ceiling" x="557" y="116"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House floor.png')" d:userLabel="House floor" x="545" y="176"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House wall right.png')" d:userLabel="House wall right" x="646" y="116"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House wall left.png')" d:userLabel="House wall left" x="544" y="116"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House roof left.png')" d:userLabel="House roof left" x="545" y="52"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/House roof right.png')" d:userLabel="House roof right" x="595" y="52"/>
+	</fx:DesignLayer>
+	<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="24" fontWeight="bold" kerning="off" d:locked="true" d:userLabel="Mortgage Downpayment Simulator" whiteSpaceCollapse="preserve" x="21" y="21">
+		<s:content><s:p><s:span>Mortgage Downpayment Simulator</s:span></s:p>		</s:content>
+	</s:RichText>
+	<fx:DesignLayer d:userLabel="Options">
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/Radio 1.png')" d:userLabel="Radio 1" visible="false" x="178" y="104"/>
+		<s:RadioButton skinClass="components.MyRadioButton" d:userLabel="optionTotal" x="178" y="135" selected.Total="true" selected.Monthly="false" click="optionTotal_clickHandler()"/>
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/Radio 1 selected.png')" d:userLabel="Radio 1 selected" visible="false" x="182" y="108"/>
+		<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Start calculating from:" whiteSpaceCollapse="preserve" x="20" y="106">
+			<s:content><s:p><s:span>Start calculating from:</s:span></s:p>			</s:content>
+		</s:RichText>
+		<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Monthly downpayment" whiteSpaceCollapse="preserve" x="207" y="106">
+			<s:content><s:p><s:span>Monthly downpayment</s:span></s:p>			</s:content>
+		</s:RichText>
+		<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Total loan amount" whiteSpaceCollapse="preserve" x="206" y="138">
+			<s:content><s:p><s:span>Total loan amount</s:span></s:p>			</s:content>
+		</s:RichText>
+		<s:RadioButton selected.Monthly="true" selected.Total="false" skinClass="components.MyRadioButton" d:userLabel="optionMonthly" x="178" y="104" click="optionMonthly_clickHandler()"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:userLabel="Input">
+		<fx:DesignLayer id="designlayer2" d:userLabel="total loan amount copy" visible.Monthly="false">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Total Loan Amount" whiteSpaceCollapse="preserve" x="22" y="217">
+				<s:content><s:p><s:span>Total Loan Amount</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput id="amountInput" skinClass="components.MyLargeTextInput" text="{cf.format(_amount)}" restrict="0-9." x="178" y="211"
+						 focusOut="calculate()" enter="calculate()"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer id="designlayer1" d:userLabel="monthly downpayment copy" visible.Total="false">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Monthly Downpayment" whiteSpaceCollapse="preserve" x="22" y="217">
+				<s:content><s:p><s:span>Monthly Downpayment</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/Simulator/downpaymentInput copy.png')" d:userLabel="downpaymentInput copy" x="178" y="211" visible.Monthly="false"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="9,999,999.99" whiteSpaceCollapse="preserve" x="193" y="217" visible.Monthly="false">
+				<s:content><s:p><s:span>9,999,999.99</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput id="downpaymentInput" includeIn="Monthly" skinClass="components.MyLargeTextInput" text="{cf.format(_downpayment)}" restrict="0-9." x="178" y="211"
+						 focusOut="calculate()" enter="calculate()"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Loan percentage">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Loan Percentage" whiteSpaceCollapse="preserve" x="22" y="249">
+				<s:content><s:p><s:span>Loan Percentage</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput id="percentInput" skinClass="components.MyMediumTextInput" text="{pf.format(_percent)}" restrict="0-9." x="178" y="243"
+						 focusOut="calculate()" enter="calculate()"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="%" whiteSpaceCollapse="preserve" x="246" y="249">
+				<s:content><s:p><s:span>%</s:span></s:p>				</s:content>
+			</s:RichText>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Years of downpayment">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Number of years" whiteSpaceCollapse="preserve" x="22" y="281">
+				<s:content><s:p><s:span>Number of years</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput id="yearInput" skinClass="components.MySmallTextInput" text="{_years}" restrict="0-9" maxChars="2" x="178" y="275"
+						 focusOut="calculate()" enter="calculate()"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="years" whiteSpaceCollapse="preserve" x="229" y="281">
+				<s:content><s:p><s:span>years</s:span></s:p>				</s:content>
+			</s:RichText>
+		</fx:DesignLayer>
+	</fx:DesignLayer>
+	<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="18" fontWeight="bold" kerning="off" d:locked="true" d:userLabel="Result" whiteSpaceCollapse="preserve" x="21" y="354">
+		<s:content><s:p><s:span>Result</s:span></s:p>		</s:content>
+	</s:RichText>
+	<fx:DesignLayer d:locked="true" d:userLabel="Output">
+		<fx:DesignLayer d:userLabel="total loan amount">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Total Loan Amount" whiteSpaceCollapse="preserve" x="22" y="390">
+				<s:content><s:p><s:span>Total Loan Amount</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/Simulator/loanAmountInput.png')" d:userLabel="loanAmountInput" visible="false" x="178" y="384"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="9,999,999.99" visible="false" whiteSpaceCollapse="preserve" x="193" y="390">
+				<s:content><s:p><s:span>9,999,999.99</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput enabled="false" skinClass="components.MyLargeTextInput" text="{cf.format(_paidOff)}" restrict="0-9." x="178" y="448"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="monthly downpayment">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Monthly Downpayment" whiteSpaceCollapse="preserve" x="22" y="422">
+				<s:content><s:p><s:span>Monthly Downpayment</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/Simulator/downpaymentInput.png')" d:userLabel="downpaymentInput" visible="false" x="178" y="416"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="9,999,999.99" visible="false" whiteSpaceCollapse="preserve" x="193" y="422">
+				<s:content><s:p><s:span>9,999,999.99</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput enabled="false" skinClass="components.MyLargeTextInput" text="{cf.format(_downpayment)}" restrict="0-9." x="178" y="416"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="total amount paid off">
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" fontWeight="bold" kerning="off" d:userLabel="Total Amount Paid Off" whiteSpaceCollapse="preserve" x="22" y="454">
+				<s:content><s:p><s:span>Total Amount Paid Off</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/Simulator/amountoutput.png')" d:userLabel="amountoutput" visible="false" x="178" y="448"/>
+			<s:RichText color="#177904" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="9,999,999.99" visible="false" whiteSpaceCollapse="preserve" x="193" y="454">
+				<s:content><s:p><s:span>9,999,999.99</s:span></s:p>				</s:content>
+			</s:RichText>
+			<s:TextInput enabled="false" skinClass="components.MyLargeTextInput" text="{cf.format(_amount)}" restrict="0-9." x="178" y="384"/>
+		</fx:DesignLayer>
+	</fx:DesignLayer>
+<!--	<fx:DesignLayer d:locked="true" d:userLabel="Graph">
+		<s:BitmapImage source="@Embed('/assets/images/Simulator/Shape 1.png')" d:userLabel="Shape 1" x="414" y="324"/>
+		<s:RichText color="#990000" fontFamily="Myriad Pro" fontSize="14" kerning="off" d:userLabel="Design comment: This is merely a placeholder for t..." whiteSpaceCollapse="preserve" x="428" y="388">
+			<s:content><s:p><s:span>Design comment:<s:br/>This is merely a placeholder for the graph that needs<s:br/>to be added using Flash Builder.<s:br/>The columns should have the color #177904 and represent<s:br/>the paid off amount for the duration of the mortgage.</s:span></s:p>			</s:content>
+		</s:RichText>
+	</fx:DesignLayer> -->
+	
+	<mx:ColumnChart id="chart" x="414" y="324" width="370" height="200" visible="false" 
+					showDataTips="true" dataProvider="{_graphData}" enabled="false">
+		<mx:verticalAxis>
+			<mx:LinearAxis id="va" minimum="0" maximum="{_paidOff}"/>
+		</mx:verticalAxis>
+		<mx:horizontalAxis>
+			<mx:LinearAxis id="ha" minimum="0" maximum="{_years + 1}"/>
+		</mx:horizontalAxis>
+		
+		<mx:verticalAxisRenderers>
+			<mx:AxisRenderer axis="{va}">
+				<mx:axisStroke>
+					<s:SolidColorStroke color="#177904" weight="2" caps="square" alpha=".75"/>
+				</mx:axisStroke>
+			</mx:AxisRenderer>
+		</mx:verticalAxisRenderers>
+		<mx:horizontalAxisRenderers>
+			<mx:AxisRenderer axis="{ha}">
+				<mx:axisStroke>
+					<s:SolidColorStroke color="#177904" weight="2" caps="square" alpha=".75"/>
+				</mx:axisStroke>
+			</mx:AxisRenderer>
+		</mx:horizontalAxisRenderers>
+		
+		<mx:series>
+			<mx:ColumnSeries xField="year" yField="paidOff">
+				<mx:fill>
+					<s:SolidColor color="#177904"/>
+				</mx:fill>
+			</mx:ColumnSeries>
+		</mx:series>
+	</mx:ColumnChart>
+
+	<s:transitions>
+		<s:Transition autoReverse="true" fromState="Total" toState="Monthly">
+			<s:Parallel>
+				<s:Parallel target="{designlayer1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{designlayer2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{amountInput}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="Monthly" toState="Total">
+			<s:Parallel>
+				<s:Parallel target="{amountInput}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{designlayer1}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{designlayer2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+</s:Application>

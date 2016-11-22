@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   minWidth="1024" minHeight="768" 
+			   xmlns:views="be.flexpert.contact.views.*"
+			   creationComplete="initApp()">
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center"/>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import be.flexpert.contact.ApplicationFacade;
+			import be.flexpert.contact.proxies.ContactProxy;
+			
+			private var facade:ApplicationFacade = ApplicationFacade.getInstance();
+			
+			private function initApp():void {
+				facade.startup(contacts);
+				contacts.init();
+			}
+		]]>
+	</fx:Script>
+
+	<views:Contacts id="contacts"/>
+</s:Application>

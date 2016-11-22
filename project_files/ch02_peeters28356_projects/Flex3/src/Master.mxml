@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+				xmlns:co="*">
+	<mx:ArrayCollection id="dp">
+		<mx:Object index="1" firstname="Steven" lastname="Peeters"/>
+		<mx:Object index="2" firstname="Mieke" lastname="Allaert"/>
+	</mx:ArrayCollection>
+	
+	<mx:DataGrid id="grid" dataProvider="{dp}">
+		<mx:columns>
+			<mx:DataGridColumn dataField="firstname" headerText="First name"/>
+			<mx:DataGridColumn dataField="lastname" headerText="Last name"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+	<co:Detail id="detail" person="{grid.selectedItem}"/>
+</mx:Application>

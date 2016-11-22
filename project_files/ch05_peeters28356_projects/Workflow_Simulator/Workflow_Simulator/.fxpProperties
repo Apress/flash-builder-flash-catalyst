@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Catalyst" parentProject="9d915ff0-0564-4471-adf3-2f6330a9f336" projectUUID="9d915ff0-0564-4471-adf3-2f6330a9f336" sdkVersion="4.0.0" uuid="9fcf353c-f36e-47c4-8ed1-ca8059e802b9" version="3">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="9fcf353c-f36e-47c4-8ed1-ca8059e802b9"/>
+    <linked location="C:/Documents and Settings/speeters.VDSBE/Application Data/Adobe/Flash Catalyst/workspace/Simulator/libs" path="/libs" position="1" uuid="9fcf353c-f36e-47c4-8ed1-ca8059e802b9"/>
+  </swc>
+  <misc/>
+  <theme/>
+</fxpProperties>

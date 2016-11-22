@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<s:Application xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:components="components.*" 
+			   xmlns:fc="http://ns.adobe.com/flashcatalyst/2009" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:services="be.flexpert.webshop.services.*"
+			   backgroundColor="#000000" height="800" 
+			   preloaderChromeColor="#000000" width="1280"
+			   creationComplete="initApp()">
+	
+	<fx:Style source="Main.css"/>
+
+	<fx:Declarations>
+		<services:PhotoAssembler id="photoService" fault="faultHandler(event)" />
+		<s:CallResponder id="photoHandler" result="photoResultHandler(event)" />
+		<services:UserAssembler id="userService" fault="faultHandler(event)" />
+		<s:CallResponder id="loginHandler" result="loginResultHandler(event)"/>
+		<s:CallResponder id="checkLoginHandler" result="checkLoginResultHandler(event)"/>
+		<s:CallResponder id="registerHandler" result="registerResultHandler(event)"/>
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import be.flexpert.webshop.events.PhotoEvent;
+			import be.flexpert.webshop.valueObjects.Photo;
+			import be.flexpert.webshop.valueObjects.User;
+			
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			[Bindable]
+			private var _photoList:ArrayCollection;
+			
+			[Bindable]
+			private var _selectedPhoto:Photo;
+			
+			[Bindable]
+			private var _shoppingCart:ArrayCollection = new ArrayCollection();
+			
+			[Bindable]
+			private var _userLoggedIn:Boolean = false;
+			[Bindable]
+			private var _user:User;
+			
+			private function initApp():void {
+				addEventListener(PhotoEvent.DETAIL, showDetail);
+				addEventListener(PhotoEvent.ADD_TO_SHOPPINGCART, addPhotoToShoppingCart);
+			}
+			
+			private function showDetail(event:PhotoEvent):void {
+				currentState = "PhotoPopup";
+				_selectedPhoto = event.photo;
+			}
+			
+			private function addPhotoToShoppingCart(event:PhotoEvent):void {
+				if(_shoppingCart == null) {
+					_shoppingCart = new ArrayCollection();
+				}
+				_shoppingCart.addItem(event.photo);
+			}
+			
+			private function faultHandler(event:FaultEvent):void {
+				Alert.show(event.fault.faultString, event.fault.faultCode);
+			}
+			
+			private function photoResultHandler(event:ResultEvent):void {
+				_photoList = event.result as ArrayCollection;
+			}
+			
+			private function loginResultHandler(event:ResultEvent):void {
+				_user = event.result as User;
+				_shoppingCart.removeAll();
+				if(event.result == null) {
+					loginError.visible = true;
+					_userLoggedIn = false;
+				} else {
+					loginError.visible = false;
+					_userLoggedIn = true;
+					currentState = "PhotoGallery";
+				}
+			}
+			
+			private function checkLoginResultHandler(event:ResultEvent):void {
+				registerError.visible = event.result;
+				
+				if(!event.result) {
+					var newUser:User = new User();
+					newUser.firstname = firstnameInput.text;
+					newUser.lastname = lastnameInput.text;
+					newUser.email = emailInput.text;
+					newUser.login = usernameInput.text;
+					newUser.password = passwordInput.text;
+					registerHandler.token = userService.createUser(newUser);
+				}
+			}
+			
+			private function registerResultHandler(event:ResultEvent):void {
+				Alert.show("Your account has been activated, please login now", "Register User");
+				currentState = "Login";
+			}
+						
+			protected function aboutSteven_clickHandler():void
+			{
+				currentState='About';
+			}
+
+			protected function closebutton_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'PhotoPopup' ) {
+					currentState='PhotoGallery';
+				}
+			}
+
+
+			protected function registerLink_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Login' ) {
+					currentState='Register';
+					firstnameInput.text = "";
+					lastnameInput.text ="";
+					emailInput.text = "";
+					usernameInput.text = "";
+					passwordInput.text = "";
+					retypeInput.text = "";
+					registerCaptcha.refreshCaptcha();
+				}
+			}
+
+
+			protected function lefttab_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Login' ) {
+					currentState='Homepage';
+				}
+				if ( state == 'Register' ) {
+					currentState='Homepage';
+				}
+			}
+
+
+			protected function righttab_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Homepage' ) {
+					currentState='Login';
+				}
+				if ( state == 'About' ) {
+					currentState='Login';
+				}
+				if ( state == 'PhotoGallery' ) {
+					currentState='Login';
+				}
+				if ( state == 'PhotoPopup' ) {
+					currentState='Login';
+				}
+				if ( state == 'Contact' ) {
+					currentState='Login';
+				}
+			}
+
+
+			protected function home_clickHandler():void
+			{
+				currentState='Homepage';
+			}
+
+
+			protected function photogallery_clickHandler():void
+			{
+				currentState='PhotoGallery';
+				searchCombo.selectedIndex = 0;
+				findPhotos();
+			}
+
+			private function findPhotos():void {
+				if(searchCombo.text == "ALL") {
+					photoHandler.token = photoService.getAllPhotos(); 
+				} else {
+					photoHandler.token = photoService.findPhotosByCategory(searchCombo.text.toUpperCase());
+				}
+			}
+
+			protected function contactme_clickHandler():void
+			{
+				currentState='Contact';
+				contactCaptcha.refreshCaptcha();
+			}
+
+
+			protected function imageButton_clickHandler():void
+			{
+				const state:String = currentState;
+				if ( state == 'Homepage' ) {
+					currentState='PhotoGallery';
+				}
+			}
+
+			protected function sendButton_clickHandler(event:MouseEvent):void
+			{
+				if(contactCaptcha.verifyCode()) {
+					// Call the back end method that sends the email
+					// to the designated address. However, this is too
+					// far out of scope for this exercise.
+				}
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				loginHandler.token = userService.loginUser(login.text, password.text);
+			}
+
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				if(passwordInput.text != retypeInput.text) {
+					Alert.show("Passwords do not match, please fill in the password exactly the same", "Password check");
+				} else {
+					if(registerCaptcha.verifyCode()) {
+						checkLoginHandler.token = userService.findUser(usernameInput.text);
+					}
+				}
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				currentState = "Login";
+			}
+		]]>
+
+	</fx:Script>
+	<s:states>
+		<s:State fc:color="0xcc0000" name="Homepage"/>
+		<s:State name="About"/>
+		<s:State name="PhotoGallery"/>
+		<s:State name="PhotoPopup"/>
+		<s:State name="Contact"/>
+		<s:State name="Login"/>
+		<s:State name="Register"/>
+	</s:states>
+	<s:BitmapImage d:locked="true" source="@Embed('/assets/images/webshop/Background.png')" d:userLabel="Background" x="0" y="0"/>
+	<s:BitmapImage d:locked="true" source="@Embed('/assets/images/webshop/wood.png')" d:userLabel="wood" x="0" y="0"/>
+	<fx:DesignLayer d:userLabel="tabs" d:locked="true">
+		<s:ToggleButton label="Log In" skinClass="components.MyCustomTab" d:userLabel="right tab" x="995" y="87" selected.Login="true" selected.Homepage="false" selected.PhotoPopup="false" selected.PhotoGallery="false" selected.Contact="false" selected.Register="true" selected.About="false" click="righttab_clickHandler()" enabled.Login="false" enabled.Register="false"/>
+		<s:ToggleButton label="Website" skinClass="components.MyCustomTab" d:userLabel="left tab" x="917" y="87" selected.Contact="true" selected.Homepage="true" selected.Login="false" selected.PhotoPopup="true" selected.PhotoGallery="true" selected.Register="false" selected.About="true" click="lefttab_clickHandler()" enabled.Contact="false" enabled.PhotoPopup="false" enabled.PhotoGallery="false" enabled.About="false" enabled.Homepage="false"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:userLabel="white container" d:locked="true">
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 2 copy.png')" d:userLabel="Layer 2 copy" x="168" y="110"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 79.png')" d:userLabel="Layer 79" x="168" y="74"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Shape 4.png')" d:userLabel="Shape 4" visible="false" x="171" y="82">
+			<s:mask>
+				<s:Group x="0" y="0">
+					<s:Path data="M 0.45 39.95 C 26.95 21.95 98.45 -17 195.45 9.45 C 259.45 26.45 270.45 26.15 278.95 26.15 C 277.45 42.65 120.95 62.45 120.95 62.45 C 120.95 62.45 6.95 53.3 0.45 39.95" winding="evenOdd">
+						<s:fill>
+							<s:SolidColor color="#ff0000"/>
+						</s:fill>
+					</s:Path>
+				</s:Group>
+			</s:mask>
+		</s:BitmapImage>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/roundcorners.png')" d:userLabel="roundcorners" x="168" y="110"/>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:userLabel="navigation" visible.Login="false" id="designlayer8" visible.Register="false" d:locked="true">
+		<s:BitmapImage d:locked="true" source="@Embed('/assets/images/webshop/Bounding navigation lines.png')" d:userLabel="Bounding navigation lines" x="176" y="247"/>
+		<fx:DesignLayer d:userLabel="Navigation">
+			<s:BitmapImage source="@Embed('/assets/images/webshop/Menu dividers.png')" d:userLabel="Menu dividers" x="170" y="278"/>
+			<s:ToggleButton label="HOME" skinClass="components.MenuButton" d:userLabel="Home" x="189" y="261" click="home_clickHandler()" selected.Homepage="true" selected.Login="false" selected.PhotoPopup="false" selected.PhotoGallery="false" selected.Contact="false" selected.Register="false" selected.About="false" enabled.PhotoPopup="false"/>
+			<s:ToggleButton label="ABOUT STEVEN" skinClass="components.MenuButton" d:userLabel="About Steven" x="190" y="281" selected.About="true" selected.Login="false" selected.Homepage="false" selected.PhotoPopup="false" selected.PhotoGallery="false" selected.Contact="false" selected.Register="false" click="aboutSteven_clickHandler()" enabled.PhotoPopup="false"/>
+			<s:ToggleButton label="PHOTO GALLERY" skinClass="components.MenuButton" d:userLabel="Photo gallery" x="188" y="301" selected.PhotoGallery="true" selected.Login="false" selected.Homepage="false" selected.PhotoPopup="true" selected.Contact="false" selected.Register="false" selected.About="false" click="photogallery_clickHandler()" enabled.PhotoPopup="false"/>
+			<s:ToggleButton label="CONTACT ME" skinClass="components.MenuButton" d:userLabel="Contact me" x="189" y="320" enabled.PhotoPopup="false" selected.Contact="true" selected.Login="false" selected.Homepage="false" selected.PhotoPopup="false" selected.PhotoGallery="false" selected.Register="false" selected.About="false" click="contactme_clickHandler()"/>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="19.989" d:userLabel="NAVIGATION" whiteSpaceCollapse="preserve" x="184" y="225">
+				<s:content><s:p><s:span>NAVIGATION</s:span></s:p></s:content>
+			</s:RichText>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Search box" visible.Homepage="false" id="designlayer3" visible.Contact="false" visible.About="false">
+			<s:Button label="SEARCH ..." skinClass="components.MyCustomButton" d:userLabel="Search Button" x="192" y="571" enabled.PhotoPopup="false"/>
+			<components:SearchComboBox id="searchCombo" x="161" y="540" currentState.PhotoPopup="Disabled" selectionChanged="findPhotos()">
+			</components:SearchComboBox>
+			<s:BitmapImage source="@Embed('/assets/images/webshop/Search title underline copy.png')" d:userLabel="Search title underline copy" x="175" y="528"/>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="19.989" d:userLabel="I’M LOOKING FOR" whiteSpaceCollapse="preserve" x="184" y="505">
+				<s:content><s:p><s:span>I’M LOOKING FOR</s:span></s:p></s:content>
+			</s:RichText>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Shopping cart box" visible="{_userLoggedIn}" id="designlayer4">
+			<s:Button label="CHECKOUT" skinClass="components.MyCustomButton" x="192" y="438"/>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="19.989" d:userLabel="MY SHOPPING CART" whiteSpaceCollapse="preserve" x="184" y="366">
+				<s:content><s:p><s:span>MY SHOPPING CART</s:span></s:p></s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/webshop/Search title underline.png')" d:userLabel="Search title underline" x="175" y="390"/>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" 
+						d:userLabel="There are currently 12 items in your shopping cart..." 
+						whiteSpaceCollapse="preserve" x="193" y="400" width="230"
+						text="There are currently {_shoppingCart.length} items in your shopping cart."/>
+		</fx:DesignLayer>
+	</fx:DesignLayer>
+	<fx:DesignLayer d:userLabel="pages">
+		<fx:DesignLayer d:userLabel="home" visible.Login="false" visible.PhotoPopup="false" visible.PhotoGallery="false" visible.Contact="false" visible.Register="false" visible.About="false" id="designlayer2">
+			<components:ImageButton x="784" y="427" click="imageButton_clickHandler()">
+			</components:ImageButton>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Hello and welcome to my web shop. This site is ded..." whiteSpaceCollapse="preserve" x="663" y="197">
+				<s:content><s:p><s:span>H</s:span><s:span kerning="auto">ello and welcome to my web shop. This site is dedicated entirely to <s:br/>nature photography. You will find lots of pictures here of mountains, <s:br/>lakes and waterfalls.<s:br/><s:br/>Currently there are only photos available from he Canadian National<s:br/>and Provincial parks. But comeback soon to find more pictures of very<s:br/>beautiful nature scenes from all over the world.<s:br/><s:br/>The photographs you find on this site are taken by myself during the<s:br/>world exploration period inmy life. I’ve already visited serveral parts of<s:br/>the world where you can find nature at its best. Trips in the past have<s:br/>taken me to the south-west of the US, through Canada from the west<s:br/>cost to the east cost, the islands of Java and Bali in Indonesia, the Alps<s:br/>in Europe and all the way across th globe on the main islands of New <s:br/>Zealand. Other glorious parts of the world will soon follow...</s:span></s:p></s:content>
+			</s:RichText>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="24" fontWeight="bold" d:userLabel="Where to go from here?" whiteSpaceCollapse="preserve" x="470" y="432">
+				<s:content><s:p><s:span>Where to go from here?</s:span></s:p></s:content>
+			</s:RichText>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="You can browse the gallery and purchase some of my..." whiteSpaceCollapse="preserve" x="470" y="470">
+				<s:content><s:p><s:span>Y</s:span><s:span kerning="auto">ou can browse the gallery and purchase some of<s:br/>my photos on this website. To go to the gallery you<s:br/>can either click on the “Photo gallery” item in the<s:br/>navigation menu on the left or you can click on the<s:br/>image on the right side of this page.</s:span></s:p></s:content>
+			</s:RichText>
+			<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="24" fontWeight="bold" d:userLabel="Welcome" whiteSpaceCollapse="preserve" x="663" y="159">
+				<s:content><s:p><s:span>Welcome</s:span></s:p></s:content>
+			</s:RichText>
+			<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 88.png')" d:userLabel="Layer 88" x="470" y="157"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Photo gallery" visible.Homepage="false" id="designlayer1" visible.About="false" d:locked="true" visible.Contact="false" visible.Login="false" visible.Register="false">
+			<fx:DesignLayer d:userLabel="Photos" d:locked="true">
+				<s:List skinClass="components.MyCustomPhotoList" d:userLabel="photo list" x="465" y="136" enabled.PhotoPopup="false" dataProvider="{_photoList}"/>
+				<s:BitmapImage height="97" source="@Embed('/assets/images/webshop/mask layer.png')" d:userLabel="mask layer" width="601" x="463" y="599"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="popup" visible.PhotoGallery="false">
+				<s:BitmapImage blendMode="multiply" source="@Embed('/assets/images/webshop/background_s Drop Shadow.png')" d:userLabel="background's Drop Shadow" x="488" y="169"/>
+				<s:BitmapImage source="@Embed('/assets/images/webshop/background_s Outer Stroke.png')" d:userLabel="background's Outer Stroke" x="490" y="170"/>
+				<s:BitmapImage source="@Embed('/assets/images/webshop/background1.png')" d:userLabel="background" x="492" y="172">
+					<s:mask>
+						<s:Group x="0" y="0">
+							<s:Path data="M 0 0.75 L 549.95 0.75 L 549.95 480.15 L 0 480.15 L 0 0.75" winding="evenOdd">
+								<s:fill>
+									<s:SolidColor color="#ff0000"/>
+								</s:fill>
+							</s:Path>
+						</s:Group>
+					</s:mask>
+				</s:BitmapImage>
+				<components:MyCustomCloseButton x="995" y="182" d:userLabel="Close button" click="closebutton_clickHandler()"/>
+				<s:Group width="505" verticalCenter="10" horizontalCenter="125">
+					<s:layout>
+						<s:VerticalLayout horizontalAlign="center" gap="20" />
+					</s:layout>
+					<mx:Image source="assets/{_selectedPhoto.location}"/>
+					<s:RichText color="#acacac" fontFamily="Century Gothic" fontSize="16" kerning="off" 
+								d:userLabel="Athabasca Glacier, Glacier National Park, Canada" 
+								whiteSpaceCollapse="preserve" width="100%"
+								text="{_selectedPhoto.photo_name}" textAlign="center"/>
+				</s:Group>
+			</fx:DesignLayer>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Login" visible.Homepage="false" visible.PhotoPopup="false" visible.PhotoGallery="false" visible.Contact="false" visible.Register="false" visible.About="false" id="designlayer7" d:locked="true">
+			<fx:DesignLayer d:userLabel="username input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="User name" whiteSpaceCollapse="preserve" x="637" y="343" x.Login="505" id="richtext1">
+					<s:content><s:p><s:span>U</s:span><s:span kerning="auto">ser name</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="username" x="704" y="336" x.Login="576" id="login">
+				</components:MyCustomTextInput>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="password input">
+				<components:MyCustomTextInput displayAsPassword="true" d:userLabel="password" x="704" y="372" x.Login="576" id="password">
+				</components:MyCustomTextInput>
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Password" whiteSpaceCollapse="preserve" x="637" y="378" x.Login="505" id="richtext2">
+					<s:content><s:p><s:span>P</s:span><s:span kerning="auto">assword</s:span></s:p></s:content>
+				</s:RichText>
+			</fx:DesignLayer>
+			<components:RegisterLink x="676" y="470" x.Login="539" click="registerLink_clickHandler()" id="registerlink1"
+									 useHandCursor="true" buttonMode="true"/>
+			<s:RichText color="#990000" fontFamily="Century Gothic" fontSize="12" kerning="off" textDecoration="underline" 
+						d:userLabel="Invalid username/password" whiteSpaceCollapse="preserve" x="691" y="495" x.Login="556" 
+						visible.Login="false" id="loginError">
+				<s:content><s:p><s:span>I</s:span><s:span kerning="auto">nvalid username/password</s:span></s:p></s:content>
+			</s:RichText>
+			<s:Button label="LOGIN" skinClass="components.MyCustomButton" d:userLabel="Login Button" x="723" y="416" x.Login="589" id="button1"
+					  click="button1_clickHandler(event)"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:userLabel="Register" visible.Homepage="false" visible.About="false" visible.PhotoGallery="false" visible.PhotoPopup="false" visible.Contact="false" visible.Login="false" id="designlayer9" d:locked="true">
+			<s:RichText color="#990000" fontFamily="Century Gothic" fontSize="12" kerning="off" textDecoration="underline" 
+						d:userLabel="The requested user name is not available" whiteSpaceCollapse="preserve" 
+						x="530" y="614" id="registerError" visible="false">
+				<s:content><s:p><s:span>T</s:span><s:span kerning="auto">he requested user name is not available</s:span></s:p></s:content>
+			</s:RichText>
+			<fx:DesignLayer d:userLabel="firstname input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="First name" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="238" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext8">
+					<s:content><s:p><s:span>F</s:span><s:span kerning="auto">irst name</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="firstName" x="585" y="231" id="firstnameInput"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="lastname input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Last name" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="273" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext7">
+					<s:content><s:p><s:span>L</s:span><s:span kerning="auto">ast name</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="lastName" x="585" y="266" id="lastnameInput"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="email input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Email" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="308" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext6">
+					<s:content><s:p><s:span>E</s:span><s:span kerning="auto">mail</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="email" x="585" y="302" id="emailInput"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="username input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="User name" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="343" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext5">
+					<s:content><s:p><s:span>U</s:span><s:span kerning="auto">ser name</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="userName" x="585" y="336" id="usernameInput"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="password input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Password" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="378" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext9">
+					<s:content><s:p><s:span>P</s:span><s:span kerning="auto">assword</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="password" x="585" y="370" id="passwordInput" displayAsPassword="true"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="retype password">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Retype password" whiteSpaceCollapse="preserve" x.Homepage="597" x.About="597" y="412" x.PhotoGallery="597" x.PhotoPopup="597" x.Contact="597" x.Login="597" x.Register="476" id="richtext10">
+					<s:content><s:p><s:span>R</s:span><s:span kerning="auto">etype password</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="retypePassword" x="585" y="404" id="retypeInput" displayAsPassword="true"/>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="Captcha">
+				<components:CaptchaImage id="registerCaptcha" noise="[0xACACAC, 0xedffba]" x="585" y="438"/>
+			</fx:DesignLayer>
+			<s:Button label="CANCEL" skinClass="components.MyCustomButton" d:userLabel="Cancel button" 
+					  x="663" y="558" id="button2"
+					  click="button2_clickHandler(event)"/>
+			<s:Button label="REGISTER" skinClass="components.MyCustomButton" d:userLabel="Register button" 
+					  x="540" y="558" id="button3"
+					  click="button3_clickHandler(event)"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:locked="true" d:userLabel="Contact" visible.Homepage="false" visible.Login="false" visible.PhotoPopup="false" visible.PhotoGallery="false" visible.Register="false" visible.About="false" id="designlayer6">
+			<fx:DesignLayer d:userLabel="email input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Email" whiteSpaceCollapse="preserve" x="560" y="269">
+					<s:content><s:p><s:span>E</s:span><s:span kerning="auto">mail</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="email" x="626" y="262">
+				</components:MyCustomTextInput>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="message input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Message" whiteSpaceCollapse="preserve" x="560" y="303">
+					<s:content><s:p><s:span>M</s:span><s:span kerning="auto">essage</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextArea x="627" y="296">
+				</components:MyCustomTextArea>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="name input">
+				<s:RichText color="#cacaca" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="Name" whiteSpaceCollapse="preserve" x="560" y="235">
+					<s:content><s:p><s:span>N</s:span><s:span kerning="auto">ame</s:span></s:p></s:content>
+				</s:RichText>
+				<components:MyCustomTextInput d:userLabel="contactName" x="626" y="228">
+				</components:MyCustomTextInput>
+			</fx:DesignLayer>
+			<fx:DesignLayer d:userLabel="Captcha">
+				<components:CaptchaImage id="contactCaptcha" noise="[0xACACAC, 0xedffba]" x="626" y="451"/>
+			</fx:DesignLayer>
+			<s:Button id="sendButton" label="SEND" skinClass="components.MyCustomButton" d:userLabel="Send button" x="722" y="571" click="sendButton_clickHandler(event)"/>
+		</fx:DesignLayer>
+		<fx:DesignLayer d:locked="true" d:userLabel="About Steven" visible.Homepage="false" visible.Login="false" visible.PhotoPopup="false" visible.PhotoGallery="false" visible.Contact="false" visible.Register="false" id="designlayer5">
+			<s:BitmapImage source="@Embed('/assets/images/webshop/ACI logo.png')" d:userLabel="ACI logo" x="869" y="406"/>
+			<s:BitmapImage source="@Embed('/assets/images/webshop/Photo.png')" d:userLabel="Photo" x="869" y="197"/>
+			<s:RichText color="#b7babc" fontFamily="Century Gothic" fontSize="24" fontWeight="bold" d:userLabel="About Steven" whiteSpaceCollapse="preserve" x="470" y="159">
+				<s:content><s:p><s:span>About Steven</s:span></s:p></s:content>
+			</s:RichText>
+			<s:RichText color="#b7babc" fontFamily="Century Gothic" fontSize="12" kerning="off" d:userLabel="As an Adobe Certified Instructor, most of my work ..." whiteSpaceCollapse="preserve" x="470" y="198">
+				<s:content><s:p><s:span>A</s:span><s:span kerning="auto">s an Adobe Certified Instructor, most of my work time is devoted<s:br/>to teaching Flex and AIR courses to a variety of developers and<s:br/>designers. Next to teaching these courses I also create custom<s:br/>courses on demand.<s:br/><s:br/>To keep my skill up-to-date I work and manage RIA projects that<s:br/>are technologically challenging or technicaly complex. During<s:br/>the 5+ years that I’ve been doing Flex and AIR projects, I’ve been<s:br/>working on all sorts of applications ranging from administrative<s:br/>applications to clustered real-time applications. I have worked<s:br/>with different types of back end technologies such as LiveCycle<s:br/>Data Services, BlazeDS, ColdFusion and PHP to connect those<s:br/>applications to newly created or existing back end services.<s:br/><s:br/>When I’m not teaching, you can find me writing blog posts on all <s:br/>things Adobe, playing around with my kids or studying what’s new<s:br/>and improved in the science world.</s:span></s:p></s:content>
+			</s:RichText>
+		</fx:DesignLayer>
+	</fx:DesignLayer>
+	<s:RichText color="#000000" fontFamily="Century Gothic" fontSize="18.66" d:locked="true" d:userLabel="NATURE PHOTOGRAPHY" whiteSpaceCollapse="preserve" x="836" y="127">
+		<s:content><s:p><s:span>NATURE PHOTOGRAPHY</s:span></s:p></s:content>
+	</s:RichText>
+	<fx:DesignLayer d:locked="true" d:userLabel="ornaments&amp;leafs">
+		<s:BitmapImage source="@Embed('/assets/images/webshop/lijn boven copy 37.png')" d:userLabel="lijn boven copy 37" visible="false" x="359" y="97"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 78.png')" d:userLabel="Layer 78" visible="false" x="167" y="203"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 23.png')" d:userLabel="Layer 23" x="166" y="3"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 24.png')" d:userLabel="Layer 24" x="112" y="27"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 80.png')" d:userLabel="Layer 80" x="165" y="198"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 48.png')" d:userLabel="Layer 48" visible="false" x="144" y="90"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Vector Smart Object_1.png')" d:userLabel="Vector Smart Object_1" visible="false" x="113" y="145"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Vector Smart Object copy 8.png')" d:userLabel="Vector Smart Object copy 8" x="196" y="78"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Vector Smart Object.png')" d:userLabel="Vector Smart Object" x="388" y="132"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 29.png')" d:userLabel="Layer 29" x="342" y="187"/>
+		<s:BitmapImage source="@Embed('/assets/images/webshop/Layer 29 copy.png')" d:userLabel="Layer 29 copy" x="393" y="178"/>
+	</fx:DesignLayer>
+	<s:transitions>
+		<s:Transition fromState="Homepage" toState="About" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{designlayer2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{designlayer5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition fromState="About" toState="Homepage" autoReverse="true">
+			<s:Parallel>
+				<s:Parallel target="{designlayer2}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+				<s:Parallel target="{designlayer5}">
+					<s:Fade duration="0"/>
+				</s:Parallel>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+	<fx:Private/>
+</s:Application>

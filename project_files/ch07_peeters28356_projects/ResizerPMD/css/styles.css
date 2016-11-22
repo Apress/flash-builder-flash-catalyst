@@ -1,0 +1,36 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/halo";
+
+@font-face {
+	src: url("../assets/LCALLIG.TTF");
+	font-family: myFont;
+}
+
+.titleLabel {
+	font-family: myFont;
+	color: #E7D0D0;
+	font-size: 48;
+}
+
+.textLabel {
+	font-family: myFont;
+	color: #E7D0D0;
+	font-size: 16;
+}
+
+s|WindowedApplication {
+	background-alpha: 0;
+}
+
+s|Label {
+	color: #333333;
+}
+
+s|Button {
+	corner-radius: 0;
+}
+
+s|Button#btnClose {
+	font-weight: bold;
+}

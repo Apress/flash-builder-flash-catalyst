@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   minWidth="1024" minHeight="768">
+	<fx:Script>
+		<![CDATA[
+			import flash.filters.ShaderFilter;
+			
+			// Define the PBJ asset
+			[Embed(source="../assets/grayscale.pbj", mimeType="application/octet-stream")]
+			private var pbj:Class;
+			
+			// Define a Shader based on the loader Pixel Bender asset.
+			private var shader:Shader = new Shader(new pbj() as ByteArray);
+			// Create a ShaderFilter, based on the Shader object we just created.
+			private var filter:ShaderFilter = new ShaderFilter(shader);
+			
+			/**
+			 * In this method we are going to trigger the Pixel Bender
+			 * effect by adding it as a ShaderFilter to the image. If 
+			 * the filter is already applied, we remove it again to
+			 * reset the image to full color.
+			 */
+			private function convertTograyScale():void {
+				if((img.filters == null) || (img.filters.length == 0)) {
+					img.filters = [filter];
+					btn.label = "Reset to full color";
+				} else {
+					img.filters = null;
+					btn.label = "Convert to grayscale";
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Group horizontalCenter="0" verticalCenter="0">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center"/>
+		</s:layout>
+
+		<mx:Image id="img" source="../assets/waterfall.jpg"/>
+		<s:Button id="btn" label="Convert to grayscale" click="convertTograyScale()"/>
+	</s:Group>	
+</s:Application>

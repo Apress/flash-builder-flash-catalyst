@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <service name="PhotoAssembler">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">be.flexpert.webshop.assemblers.PhotoAssembler</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">be.flexpert.webshop.services</item>
+      <item name="Destination">ColdFusion</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="ServiceFilesGenerated">be/flexpert/webshop/services/_Super_PhotoAssembler.as~#~be/flexpert/webshop/services/PhotoAssembler.as~#~</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">ColdFusion</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">be.flexpert.webshop.valueObjects</item>
+      <item name="COLDFUSION_SERVER_ROOT_URL">http://localhost:8500/</item>
+      <item name="LINKED_FILE">PhotoAssembler.cfc</item>
+      <item name="COLDFUSION_SERVER_CONTEXT_ROOT"></item>
+      <item name="CFC_CLASS_NAME">PhotoAssembler</item>
+      <item name="CFC_RELATIVE_LOCATION">be/flexpert/webshop/assemblers/PhotoAssembler.cfc</item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8500/flex2gateway/</item>
+      <item name="CFC_LOCATION">C:/ColdFusion9/wwwroot/be/flexpert/webshop/assemblers/PhotoAssembler.cfc</item>
+    </annotation>
+    <function name="findPhotosByCategory" arguments="category:string" return-type="Photo[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">category,thumbnail,price,location,photo_name,photo_id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getAllPhotos" return-type="Photo[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">category,thumbnail,price,location,photo_name,photo_id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Photo">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Photo</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">be.flexpert.webshop.dtos.Photo</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">PhotoAssembler</item>
+    </annotation>
+    <annotation name="getAllPhotos">
+      <item name="propertySpecifier">category,thumbnail,price,location,photo_name,photo_id</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">be.flexpert.webshop.valueObjects</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="EntityFilesGenerated">be/flexpert/webshop/valueObjects/_PhotoEntityMetadata.as~#~be/flexpert/webshop/valueObjects/_Super_Photo.as~#~be/flexpert/webshop/valueObjects/Photo.as~#~</item>
+    </annotation>
+    <annotation name="findPhotosByCategory">
+      <item name="propertySpecifier">category,thumbnail,price,location,photo_name,photo_id</item>
+    </annotation>
+    <property name="category" type="string" required="true"/>
+    <property name="thumbnail" type="string" required="true"/>
+    <property name="price" type="double" required="true" default="0"/>
+    <property name="location" type="string" required="true"/>
+    <property name="photo_name" type="string" required="true"/>
+    <property name="photo_id" type="integer" required="true"/>
+  </entity>
+  <service name="UserAssembler">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">be.flexpert.webshop.assemblers.UserAssembler</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">be.flexpert.webshop.services</item>
+      <item name="Destination">ColdFusion</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="ServiceFilesGenerated">be/flexpert/webshop/services/_Super_UserAssembler.as~#~be/flexpert/webshop/services/UserAssembler.as~#~</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">ColdFusion</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">be.flexpert.webshop.valueObjects</item>
+      <item name="COLDFUSION_SERVER_ROOT_URL">http://localhost:8500/</item>
+      <item name="LINKED_FILE">UserAssembler.cfc</item>
+      <item name="COLDFUSION_SERVER_CONTEXT_ROOT"></item>
+      <item name="CFC_CLASS_NAME">UserAssembler</item>
+      <item name="CFC_RELATIVE_LOCATION">be/flexpert/webshop/assemblers/UserAssembler.cfc</item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost:8500/flex2gateway/</item>
+      <item name="CFC_LOCATION">C:/ColdFusion9/wwwroot/be/flexpert/webshop/assemblers/UserAssembler.cfc</item>
+    </annotation>
+    <function name="findUser" arguments="login:string" return-type="boolean">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">boolean</item>
+      </annotation>
+    </function>
+    <function name="loginUser" arguments="login:string,password:string" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string,string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getUser" arguments="login:string" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">email,lastname,login,user_id,firstname,password</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">string</item>
+        <item name="returnType">User</item>
+      </annotation>
+    </function>
+    <function name="createUser" arguments="user:User" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">User</item>
+        <item name="returnType">User</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="User">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">User</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="RemoteClass">be.flexpert.webshop.dtos.User</item>
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">UserAssembler</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">be.flexpert.webshop.valueObjects</item>
+    </annotation>
+    <annotation name="ASFilesGenerated">
+      <item name="EntityFilesGenerated">be/flexpert/webshop/valueObjects/_Super_User.as~#~be/flexpert/webshop/valueObjects/_UserEntityMetadata.as~#~be/flexpert/webshop/valueObjects/User.as~#~</item>
+    </annotation>
+    <annotation name="getUser">
+      <item name="propertySpecifier">email,lastname,login,user_id,firstname,password</item>
+    </annotation>
+    <property name="email" type="string" required="true"/>
+    <property name="lastname" type="string" required="true"/>
+    <property name="login" type="opaque" required="true"/>
+    <property name="user_id" type="integer" required="true"/>
+    <property name="firstname" type="string" required="true"/>
+    <property name="password" type="opaque" required="true"/>
+  </entity>
+</model>

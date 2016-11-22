@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="43" version="2.0">
+<workbenchAdvisor/>
+<window height="768" maximized="true" width="1024" x="154" y="154">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="98" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="com.adobe.ide.coldfusion.ui.OpenProjectActionSet" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="com.adobe.ide.coldfusion.ui.openCFCDialog" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="124" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="50" y="22"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="185" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.adobe.ide.editor.CFMLEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.adobe.rds.QueryEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.adobe.ide.coldfusion.startup.startpage.editor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page focus="true" label="&lt;Unknown Label&gt; - ColdFusion">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="com.adobe.ide.editor.CFMLEditor" name="Application.cfc" partName="Application.cfc" path="D:/Flash Builder &amp; Flash Catalyst boek/projects/E-commerce/webshop_backend/Application.cfc" title="/webshop_backend/Application.cfc" tooltip="webshop_backend/Application.cfc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/webshop_backend/Application.cfc"/>
+</editor>
+<editor id="com.adobe.ide.editor.CFMLEditor" name="User.cfc" partName="User.cfc" path="D:/Flash Builder &amp; Flash Catalyst boek/projects/E-commerce/webshop_backend/be/flexpert/webshop/dtos/User.cfc" title="/webshop_backend/be/flexpert/webshop/dtos/User.cfc" tooltip="webshop_backend/be/flexpert/webshop/dtos/User.cfc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/webshop_backend/be/flexpert/webshop/dtos/User.cfc"/>
+</editor>
+<editor id="com.adobe.ide.editor.CFMLEditor" name="Photo.cfc" partName="Photo.cfc" path="D:/Flash Builder &amp; Flash Catalyst boek/projects/E-commerce/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" title="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" tooltip="webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc"/>
+</editor>
+<editor activePart="true" focus="true" id="com.adobe.ide.editor.CFMLEditor" name="UserAssembler.cfc" partName="UserAssembler.cfc" path="D:/Flash Builder &amp; Flash Catalyst boek/projects/E-commerce/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" title="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" tooltip="webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+</editor>
+<editor id="com.adobe.ide.editor.CFMLEditor" name="PhotoAssembler.cfc" partName="PhotoAssembler.cfc" path="D:/Flash Builder &amp; Flash Catalyst boek/projects/E-commerce/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" title="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" tooltip="webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc"/>
+</editor>
+</editors>
+<views>
+<view id="com.aptana.ide.server.ui.serversView" partName="Servers">
+<viewState/>
+</view>
+<view id="com.aptana.ide.js.ui.views.FileExplorerView" partName="File">
+<viewState/>
+</view>
+<view id="com.adobe.ide.coldfusion.views.snippets" partName="Snippets">
+<viewState/>
+</view>
+<view id="com.adobe.rds.client.views.FileView" partName="RDS Fileview">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ResourceNavigator" partName="Navigator">
+<viewState LINK_NAVIGATOR_TO_EDITOR="0" sorter="1">
+<filters>
+<filter element=".project" isEnabled="true"/>
+<filter element=".settings" isEnabled="true"/>
+<filter element=".DS_Store" isEnabled="true"/>
+<filter element="settings.xml" isEnabled="true"/>
+<filter element="*.cfc" isEnabled="false"/>
+<filter element="*.cfm" isEnabled="false"/>
+<filter element="*.cfml" isEnabled="false"/>
+<filter element="*.css" isEnabled="false"/>
+<filter element="*.gif" isEnabled="false"/>
+<filter element="*.htm" isEnabled="false"/>
+<filter element="*.html" isEnabled="false"/>
+<filter element="*.js" isEnabled="false"/>
+<filter element="*.lck" isEnabled="false"/>
+<filter element="*.log" isEnabled="false"/>
+<filter element="*.swf" isEnabled="false"/>
+<filter element="*.txt" isEnabled="false"/>
+<filter element=".tmp*~" isEnabled="true"/>
+<filter element="*.class" isEnabled="false"/>
+<filter element=".*" isEnabled="false"/>
+</filters>
+<expanded>
+<element path="/webshop_backend"/>
+<element path="/webshop_backend/be"/>
+<element path="/webshop_backend/be/flexpert"/>
+<element path="/webshop_backend/be/flexpert/webshop"/>
+<element path="/webshop_backend/be/flexpert/webshop/assemblers"/>
+</expanded>
+<selection>
+<element path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+</selection>
+</viewState>
+</view>
+<view id="com.adobe.ide.coldfusion.appcodegeneration.extensionview" partName="Extensions"/>
+<view id="com.aptana.ide.logging.LogView" partName="TailView"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console"/>
+<view id="com.adobe.rds.client.views.DatabaseView" partName="RDS Dataview">
+<viewState/>
+</view>
+<view id="com.adobe.coldfusion.servicebrowser.views.servicebrowser" partName="Services Browser"/>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="com.adobe.ide.editor.CFMLEditor" activePerspective="com.adobe.ide.coldfusion.perspective.CFML">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.adobe.ide.coldfusion.ui.perspective.CFPerspective" id="com.adobe.ide.coldfusion.perspective.CFML" label="ColdFusion"/>
+<alwaysOnActionSet id="com.adobe.ide.amt"/>
+<alwaysOnActionSet id="openstartpage"/>
+<alwaysOnActionSet id="com.adobe.ide.coldfusion.ui.OpenProjectActionSet"/>
+<alwaysOnActionSet id="openAbout"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="com.adobe.ide.coldfusion.ui.openCFCDialog"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<show_view_action id="com.aptana.ide.js.ui.views.FileExplorerView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="com.aptana.ide.js.ui.views.problemsView"/>
+<show_view_action id="com.aptana.ide.server.ui.serversView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.adobe.ide.coldfusion.views.snippets"/>
+<show_view_action id="com.adobe.rds.client.views.DatabaseView"/>
+<show_view_action id="com.adobe.rds.client.views.FileView"/>
+<show_view_action id="com.aptana.ide.logging.LogView"/>
+<show_view_action id="com.adobe.coldfusion.servicebrowser.views.servicebrowser"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<new_wizard_action id="com.adobe.ide.coldfusion.ui.CFML"/>
+<new_wizard_action id="com.adobe.ide.coldfusion.CFC"/>
+<new_wizard_action id="com.adobe.ide.coldfusion.CFInterface"/>
+<new_wizard_action id="com.adobe.ide.coldfusion.CFProject"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.views.ResourceNavigator"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="com.adobe.rds.client.views.DatabaseView"/>
+<view id="com.adobe.rds.client.views.FileView"/>
+<view id="com.adobe.ide.coldfusion.views.snippets"/>
+<view id="com.aptana.ide.server.ui.serversView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="com.aptana.ide.logging.LogView"/>
+<view id="com.adobe.coldfusion.servicebrowser.views.servicebrowser"/>
+<view id="com.adobe.ide.coldfusion.appcodegeneration.extensionview"/>
+<view id="com.aptana.ide.js.ui.views.FileExplorerView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="org.eclipse.ui.views.ResourceNavigator" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ResourceNavigator" label="Navigator"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="756" ratioRight="252" relationship="2" relative="left">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.18573996" ratioLeft="310" ratioRight="1359" relationship="2" relative="left"/>
+<info folder="true" part="right" ratio="0.80614334" ratioLeft="1181" ratioRight="284" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.adobe.rds.client.views.DatabaseView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="com.adobe.rds.client.views.DatabaseView" label="RDS Dataview"/>
+<page content="com.adobe.rds.client.views.FileView" label="RDS Fileview"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="rightBottom" ratio="0.648986" ratioLeft="416" ratioRight="225" relationship="4" relative="right">
+<folder activePageID="com.adobe.ide.coldfusion.views.snippets" appearance="2" expanded="2">
+<page content="com.adobe.ide.coldfusion.views.snippets" label="Snippets"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="bottom" ratio="0.79875195" ratioLeft="512" ratioRight="129" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.aptana.ide.server.ui.serversView" appearance="2" expanded="2">
+<page content="com.aptana.ide.server.ui.serversView" label="Servers"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="com.aptana.ide.logging.LogView" label="TailView"/>
+<page content="com.adobe.coldfusion.servicebrowser.views.servicebrowser" label="Services Browser"/>
+<page content="com.adobe.ide.coldfusion.appcodegeneration.extensionview" label="Extensions"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="leftBottom" ratio="0.698908" ratioLeft="448" ratioRight="193" relationship="4" relative="left">
+<folder activePageID="com.aptana.ide.js.ui.views.FileExplorerView" appearance="2" expanded="2">
+<page content="com.aptana.ide.js.ui.views.FileExplorerView" label="File"/>
+<page content="com.aptana.ide.js.ui.views.FileExplorerView:*" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/index.cfm"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/Application.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/dtos/User.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="com.adobe.ide.coldfusion.startup.startpage.StartPageEditorInput" id="com.adobe.ide.coldfusion.startup.startpage.editor" style="20" tooltip="" url="file:/C:/Program Files/Adobe/Adobe ColdFusion Builder/plugins/com.adobe.ide.coldfusion.startup_1.0.0.263215/welcome/welcome.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/flexpert/webshop/dtos/User.cfc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/be/index.cfm"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" path="/webshop_backend/Application.cfc"/>
+</editors>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" index="1"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="2"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="3"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="Adobe ColdFusion Builder Startpage" index="4"/>
+<item historyLabel="/webshop_backend/index.cfm" index="0"/>
+<item historyLabel="/webshop_backend/Application.cfc" index="5"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/User.cfc" index="6"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" index="7"/>
+<item historyLabel="Adobe ColdFusion Builder Startpage" index="8"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/Photo.cfc" index="7"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="9">
+<position/>
+</item>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="9">
+<position info="not_deleted" x="0" y="1080"/>
+</item>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="10"/>
+<item historyLabel="Adobe ColdFusion Builder Startpage" index="11"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="10"/>
+<item historyLabel="Web Browser" index="12"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc" index="10"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="13"/>
+<item historyLabel="Adobe ColdFusion Builder Startpage" index="14"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="13"/>
+<item historyLabel="Adobe ColdFusion Builder Startpage" index="15"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="13"/>
+<item historyLabel="Web Browser" index="16"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="13"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/User.cfc" index="17"/>
+<item historyLabel="/webshop_backend/be/index.cfm" index="18"/>
+<item historyLabel="/webshop_backend/be/flexpert/webshop/dtos/User.cfc" index="17"/>
+<item historyLabel="/webshop_backend/Application.cfc" index="19"/>
+<item active="true" historyLabel="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc" index="13"/>
+</navigationHistory>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="index.cfm" tooltip="webshop_backend/be/index.cfm">
+<persistable path="/webshop_backend/be/index.cfm"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="PhotoAssembler.cfc" tooltip="webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc">
+<persistable path="/webshop_backend/be/flexpert/webshop/assemblers/PhotoAssembler.cfc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="UserAssembler.cfc" tooltip="webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc">
+<persistable path="/webshop_backend/be/flexpert/webshop/assemblers/UserAssembler.cfc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="Photo.cfc" tooltip="webshop_backend/be/flexpert/webshop/dto/Photo.cfc">
+<persistable path="/webshop_backend/be/flexpert/webshop/dto/Photo.cfc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="User.cfc" tooltip="webshop_backend/be/flexpert/webshop/dto/User.cfc">
+<persistable path="/webshop_backend/be/flexpert/webshop/dto/User.cfc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.adobe.ide.editor.CFMLEditor" name="Application.cfc" tooltip="webshop_backend/Application.cfc">
+<persistable path="/webshop_backend/Application.cfc"/>
+</file>
+</mruList>
+</workbench>
